@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Unity,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="NoahCodeMonkey's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="现在的我还是一名 Unity3d 游戏开发初学者，所以现在都在围绕 Unity3d 的官方案例来做练习，为此写下一些文章作为笔记，文章中难免会有一些疏漏，有些不当之处还望指正。 项目简介首先玩家可以控制一个小球，去吃那些悬浮在平面上的小方块，全部吃玩就游戏结束了，是一个很简单的小游戏。 创建工程首先我们创建一个空的工程  环境搭建创建地面在 Hierarchy 界面中右键选择 3D Object">
+<meta name="keywords" content="Unity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity官方案例--Roll a ball">
+<meta property="og:url" content="http://noahcodemonkey.top/2018/11/15/2018-11-15-Unity官方案例-Roll-a-ball/index.html">
+<meta property="og:site_name" content="NoahCodeMonkey&#39;s Blog">
+<meta property="og:description" content="现在的我还是一名 Unity3d 游戏开发初学者，所以现在都在围绕 Unity3d 的官方案例来做练习，为此写下一些文章作为笔记，文章中难免会有一些疏漏，有些不当之处还望指正。 项目简介首先玩家可以控制一个小球，去吃那些悬浮在平面上的小方块，全部吃玩就游戏结束了，是一个很简单的小游戏。 创建工程首先我们创建一个空的工程  环境搭建创建地面在 Hierarchy 界面中右键选择 3D Object">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://pij34n7du.bkt.clouddn.com/pjt2_img01.png">
+<meta property="og:image" content="http://pij34n7du.bkt.clouddn.com/pjt2_img02.png">
+<meta property="og:image" content="http://pij34n7du.bkt.clouddn.com/pjt2_img03.png">
+<meta property="og:image" content="http://pij34n7du.bkt.clouddn.com/pjt2_img04.png">
+<meta property="og:image" content="http://pij34n7du.bkt.clouddn.com/pjt2_img05.png">
+<meta property="og:image" content="http://pij34n7du.bkt.clouddn.com/pjt2_img06.png">
+<meta property="og:image" content="http://pij34n7du.bkt.clouddn.com/pjt2_img07.png">
+<meta property="og:image" content="http://pij34n7du.bkt.clouddn.com/pjt2_img08.png">
+<meta property="og:image" content="http://pij34n7du.bkt.clouddn.com/pjt2_img09.png">
+<meta property="og:image" content="http://pij34n7du.bkt.clouddn.com/pjt2_img10.png">
+<meta property="og:image" content="http://pij34n7du.bkt.clouddn.com/pjt2_img11.png">
+<meta property="og:image" content="http://pij34n7du.bkt.clouddn.com/pjt2_img12.png">
+<meta property="og:image" content="http://pij34n7du.bkt.clouddn.com/pjt2_img13.png">
+<meta property="og:image" content="http://pij34n7du.bkt.clouddn.com/pjt2_img14.png">
+<meta property="og:image" content="http://pij34n7du.bkt.clouddn.com/pjt2_img15.png">
+<meta property="og:updated_time" content="2018-11-22T00:25:40.345Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unity官方案例--Roll a ball">
+<meta name="twitter:description" content="现在的我还是一名 Unity3d 游戏开发初学者，所以现在都在围绕 Unity3d 的官方案例来做练习，为此写下一些文章作为笔记，文章中难免会有一些疏漏，有些不当之处还望指正。 项目简介首先玩家可以控制一个小球，去吃那些悬浮在平面上的小方块，全部吃玩就游戏结束了，是一个很简单的小游戏。 创建工程首先我们创建一个空的工程  环境搭建创建地面在 Hierarchy 界面中右键选择 3D Object">
+<meta name="twitter:image" content="http://pij34n7du.bkt.clouddn.com/pjt2_img01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://noahcodemonkey.top/2018/11/15/2018-11-15-Unity官方案例-Roll-a-ball/">
+
+
+
+
+
+  <title>Unity官方案例--Roll a ball | NoahCodeMonkey's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <!--fork me on Github-star-->
+    <a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    <!--fork me on Github-end-->
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NoahCodeMonkey's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一点点积累，一点点奋斗</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://noahcodemonkey.top/2018/11/15/2018-11-15-Unity官方案例-Roll-a-ball/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="NoahCode">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NoahCodeMonkey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Unity官方案例--Roll a ball</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-15T20:12:30+08:00">
+                2018-11-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-22T08:25:40+08:00">
+                2018-11-22
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/11/15/2018-11-15-Unity官方案例-Roll-a-ball/" class="leancloud_visitors" data-flag-title="Unity官方案例--Roll a ball">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.6k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>现在的我还是一名 Unity3d 游戏开发初学者，所以现在都在围绕 Unity3d 的官方案例来做练习，为此写下一些文章作为笔记，文章中难免会有一些疏漏，有些不当之处还望指正。</p>
+<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><p>首先玩家可以控制一个小球，去吃那些悬浮在平面上的小方块，全部吃玩就游戏结束了，是一个很简单的小游戏。</p>
+<h2 id="创建工程"><a href="#创建工程" class="headerlink" title="创建工程"></a>创建工程</h2><p>首先我们创建一个空的工程</p>
+<p><img src="http://pij34n7du.bkt.clouddn.com/pjt2_img01.png" alt="诶呀，图片加载出了点问题！"></p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h3 id="创建地面"><a href="#创建地面" class="headerlink" title="创建地面"></a>创建地面</h3><p>在 Hierarchy 界面中右键选择 3D Object 中的 Plane 创建一个地面，其中将他 Inspector 界面中的 Scale(X:2,Y:1,Z:2)使地面扩大一下，这里需要让大家养成一个好的习惯就是<strong>物体的需要命名并且要有意义</strong>，所以我将我们的 Plan物体名改为 Ground。</p>
+<p><img src="http://pij34n7du.bkt.clouddn.com/pjt2_img02.png" alt="诶呀，图片加载出了点问题！"></p>
+<h3 id="给地面添加材质"><a href="#给地面添加材质" class="headerlink" title="给地面添加材质"></a>给地面添加材质</h3><p>但由于这地面太白了，再加上默认的灯光效果很亮表现得很刺眼，所以我给地面添加了一个黑色的材质，这里有需要大家养成一个<strong>文件分类</strong>的好习惯，所以我在我们的 Assets 文件夹中新建了一个 Materials 文件夹用来存放我们需要用到的材质文件，选中 Materials 文件夹后右键选择 Create 选项中选择 Material 就可以创建一个材质文件了，我将它改名为 Ground，其中在他的 Inspector 界面中将 Main Maps 中的 Albedo 的颜色调整为黑色，最后只需将这个材质文件拖到我们场景中的地面上即可。</p>
+<p><img src="http://pij34n7du.bkt.clouddn.com/pjt2_img03.png" alt="诶呀，图片加载出了点问题！"></p>
+<h3 id="添加墙"><a href="#添加墙" class="headerlink" title="添加墙"></a>添加墙</h3><p>在 Hierarchy 界面中右键选择 3D Object 中的 Cube 来创建四周的墙，其中在它们的 Inspector 界面中都设置 Scale(X:21,Y:1,Z:1)，它们的位置分别设置为</p>
+<p>Wall[Positon(X:0,Y:0,Z:10)],</p>
+<p>Wall1[Positon(X:0,Y:0,Z:-10)],</p>
+<p>Wall2[Position(X:10,Y:0,Z:0),Rotation(X:0,Y:90,Z:0)],</p>
+<p>Wall3[Position(X:-10,Y:0,Z:0),Rotation(X:0,Y:90,Z:0)]</p>
+<p>这里又有一点需要大家养成的习惯就是<strong>若有相同的物体应该创建一个空的物体将他们都存放在你里面</strong>，所以我在 Hierarchy 中创建了一个空的物体改名为 Walls 将这四个墙存放在其中。</p>
+<p><img src="http://pij34n7du.bkt.clouddn.com/pjt2_img04.png" alt="诶呀，图片加载出了点问题！"></p>
+<h3 id="设置摄像机"><a href="#设置摄像机" class="headerlink" title="设置摄像机"></a>设置摄像机</h3><p>选择我们场景中的 Main Camera 设置它的 Position(X:0,Y:10,Z:-10),Rotation(X:45,Y:0,Z:0)即可。</p>
+<p><img src="http://pij34n7du.bkt.clouddn.com/pjt2_img05.png" alt="诶呀，图片加载出了点问题！"></p>
+<h3 id="添加-Player"><a href="#添加-Player" class="headerlink" title="添加 Player"></a>添加 Player</h3><p>在 Hierarchy 界面中右键选择 3D Object 中选择 Sphere 将它改名为 Player，设置它的 Position(X:0,Y:0.5,Z:0)</p>
+<p><img src="http://pij34n7du.bkt.clouddn.com/pjt2_img06.png" alt="诶呀，图片加载出了点问题！"></p>
+<h3 id="添加-Pick-Up"><a href="#添加-Pick-Up" class="headerlink" title="添加 Pick Up"></a>添加 Pick Up</h3><p>在 Hierarchy 界面中右键选择 3D Object 中选择 Cube 将他改名为 Pickup ，其中几个比较关键的设置是 Position 的y的值最好要大于1因为过低 他会卡在地面里，Rotation(X:45,Y:45,Z:45)，还有一个特别关键的就是将 Box Collider 中的 Is Trigger 勾上，它的作用是做触发器，简单来说就是就是当两个物体发生碰撞不产生碰撞效果，但会触发碰撞事件(如果还不能理解，自己在 Unity 中实验一下)，然后就是多创建几个 Pick Up 位置你们随便放，不过这里也有一个方法方便我们创建多个相同的物体并且还可以同步之后需要更改的设置，那就是创建 Prefab。我们在 Assets 文件夹中创建一个 Prefabs 文件夹，将我们创建的 Pickup物体拖至此文件夹，当我们看到 Pickup 物体的名称变蓝后，这就意味着我们的 prefab 创建完成，当我们需要创建 Pickup 物体时，现在只需将 prefab 中的 Pickup 拖至我们的场景中即可创建，然后就是创建一个空的物体改名为 Pickups 用来存放我们创建的 Pickup 。</p>
+<p><img src="http://pij34n7du.bkt.clouddn.com/pjt2_img07.png" alt="诶呀，图片加载出了点问题！"></p>
+<p>在 Inspector 界面中找到 Tag 选项后单机再选择选项中最下方的 Add Tag… 后会来到我们的 Tags &amp; Layers 界面，在下方会看见一个 + 标志后单机在输入框中输入 PickUp 后选择 Sa7e 后即可添加标签</p>
+<p><img src="http://pij34n7du.bkt.clouddn.com/pjt2_img08.png" alt="诶呀，图片加载出了点问题！"></p>
+<h3 id="添加-UI"><a href="#添加-UI" class="headerlink" title="添加 UI"></a>添加 UI</h3><p>在 Hierarchy 界面中右键选择 UI 后再选择 Text 选项就可以添加我们的 UI 了，我们将创建出来的 Text 文件改名为 CountText，我们可以在 Inspector 界面中的 Text(Script) 中调整文字内容、字体、字体大小、颜色等多种属性，我们必须要做的是将文本默认的内容给删掉就行了，其他的设置看自己喜好了，但我们要将它至于界面的左上角该如何操作呢？我们可以在 Rect Transform 中看到一个田字格，我们单机一下它就会出现很多位置选项，但是并没有我们所需要的左上角，这时候我们只需要一直按住键盘上的 Alt 键就会发现上面的位置选项发生了变化，之后就可以很明显的看到左上角的选项然后我们选择它就可以了，然后在 Canvas 文件夹下在创建一个 Text 改名为 WinText 用来存储我们的胜利文本的，也要将文本内容删去，位置居中默认就行了，其他设置自定义。</p>
+<p><img src="http://pij34n7du.bkt.clouddn.com/pjt2_img09.png" alt="诶呀，图片加载出了点问题！"></p>
+<h2 id="游戏运行"><a href="#游戏运行" class="headerlink" title="游戏运行"></a>游戏运行</h2><p>从这儿起就要开始我们的脚本编写了，现在 Unity3D 主流脚本编辑语言是 <strong>C#</strong>，不过像我现在用的 Unity 3D 2018.2的版本脚本语言只剩下了 C#，所以推荐大家写脚本还是用 C# 来编写，学过的朋友理解起来就很方便了，没学过的朋友可以从网上找找相关教学视频了解一下，不过有一点编程经验的其实理解起来还是很简单的，我会在下面脚本中写下相应注释的，方便一些初学者理解的。</p>
+<p>Unity官方有一个脚本文档，在遇到什么不懂得问题或者需要完成什么操作脚本忘了怎么写时可以进行查阅。</p>
+<p><a href="https://docs.unity3d.com/ScriptReference/index.html" target="_blank" rel="noopener">Unity官方脚本文档</a></p>
+<h3 id="Player-的移动"><a href="#Player-的移动" class="headerlink" title="Player 的移动"></a>Player 的移动</h3><p>选择我们的 Player 物体文件，在 Inspector 的下方点击 Add Component 在其中的输入框中输入 Rigidbody 回车确定选择，即可给我们的 Player物体添加刚体组件，刚体组件的用处就是给物体添加物理属性的，其中我们将 Angular Drag 的值改为0，意思是取消小球的摩擦力。</p>
+<p><img src="http://pij34n7du.bkt.clouddn.com/pjt2_img10.png" alt="诶呀，图片加载出了点问题！"></p>
+<p>还是点击 Add Component 在输入框中输入 PlayerController 选择 New script 再点击下方的 Create and Add 即可给我们的 Player 挂载脚本了，然后我在我们的 Assets 文件夹中创建一个 Scripts 文件夹用来存储我们游戏中的所有用到的脚本文件，将我们刚刚创建的脚本文件拖进此文件夹。</p>
+<p><img src="http://pij34n7du.bkt.clouddn.com/pjt2_img11.png" alt="诶呀，图片加载出了点问题！"></p>
+<p>双击我们的脚本文件，就打开了我们默认的脚本编辑器来编辑我们的脚本，我使用的是 visual studio 2017。</p>
+<p><img src="http://pij34n7du.bkt.clouddn.com/pjt2_img12.png" alt="诶呀，图片加载出了点问题！"></p>
+<p>下面就开始编辑我们的脚本，来完成小球 Player 的移动。</p>
+<p>脚本文件名：PlayerController</p>
+<p>代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PlayerController</span> :</span> MonoBehaviour &#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//public 公共的，会使此变量显示在 unity 编辑器中方便我们调节数值</span></span><br><span class="line"><span class="comment">//此处定义一个 speed 变量是为了控制 Player 的运动速度</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">float</span> speed;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">FixedUpdate</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//获取横向要使 Player 位移的量</span></span><br><span class="line">    <span class="keyword">float</span> moveHorizontal = Input.GetAxis(<span class="string">"Horizontal"</span>);</span><br><span class="line">    <span class="comment">//获取纵向要使 Player 位移的量</span></span><br><span class="line">    <span class="keyword">float</span> moveVertical = Input.GetAxis(<span class="string">"Vertical"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义一个新的三维向量，来确定 Player 的运行方向</span></span><br><span class="line">    Vector3 movement = <span class="keyword">new</span> Vector3(moveHorizontal, <span class="number">0.0f</span>, moveVertical);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//给 Player 添加一个力使其运动，力的大小我们可以在 Unity 编辑器中编辑</span></span><br><span class="line">    <span class="comment">//这里再乘以一个Time.deltaTime是为了使 Player 完成的是每秒移动 speed 米，而不是每帧 speed 米，你们可以试试将这个Time.detalTime删去后 Player 的运行效果</span></span><br><span class="line">    GetComponent&lt;Rigidbody&gt;().AddForce(movement * Time.deltaTime * speed);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>脚本写完后记得保存一下，再来到我们的 Unity 编辑器中，选择 Player 物体后你会发现在脚本中多出来一个 Speed 项，这就是我们之前定义它为 public 公共项的作用了，我们将他设置值为120，然后点击 Unity 编辑器上方的播放按钮运行，之后我们就可以按 W、A、S、D 键来控制我们的 Player 运动了。</p>
+<p><img src="http://pij34n7du.bkt.clouddn.com/pjt2_img13.png" alt="诶呀，图片加载出了点问题！"></p>
+<h3 id="相机跟随"><a href="#相机跟随" class="headerlink" title="相机跟随"></a>相机跟随</h3><p>让相机跟随 Player 一起运动，使相机和物体为关联关系但不是父子级别的关系，若是父子关系由于 Player 是球体运动时会滚动，所以相机也会随着 Player 的滚动而滚动，这不是我们需要的效果。</p>
+<p>选择 Main Camera 物体用上文同样的方法添加 CameraController 脚本文件，然后拖至 Scripts文件夹中存放，双击脚本文件进行编辑。</p>
+<p>脚本文件名：Camera Controller</p>
+<p>代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CameraController</span> :</span> MonoBehaviour &#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个公共的游戏物体，在Unity编辑器中可以将一个物体拖至脚本处的 player 的框中，脚本中就可以直接获取此物体，就不需要查找的步骤</span></span><br><span class="line"><span class="comment">//此处的功能就是将我们需要摄像机跟随的物体添加进去，也就是 Player</span></span><br><span class="line"><span class="keyword">public</span> GameObject player;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个变量，用来存储摄像机与物体 Player 未知的默认的差值</span></span><br><span class="line"><span class="keyword">private</span> Vector3 offSet;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//我们给 offSet 赋值，值的的大小为摄像机的 Position 三维向量的值减去 物体 Position 三维向量的值，也就是相机与物体之间的距离</span></span><br><span class="line">    offSet = transform.position - player.transform.position;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">LateUpdate</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//使我们的相机的位置永远位于物体的位置+ offSet 这个差值</span></span><br><span class="line">    transform.position = player.transform.position + offSet;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>脚本编写完后我们来到 Unity3D编辑器，选择 Main Camera 物体文件后会发现在脚本下方出现了一个叫 Player 的项，我们可以吧 Player 物体拖至后方的框子中，然后运行移动 Player 就会发现摄像机也在跟随着 Player 一起运动。</p>
+<p><img src="http://pij34n7du.bkt.clouddn.com/pjt2_img14.png" alt="诶呀，图片加载出了点问题！"></p>
+<h3 id="Pick-Up-的自转"><a href="#Pick-Up-的自转" class="headerlink" title="Pick Up 的自转"></a>Pick Up 的自转</h3><p>这次我们要完成的是将 Pick Up 旋转起来。</p>
+<p>选择 Prefabes 中的 Pickup 物体，添加名为 Rotation 的脚本文件后拖至 Scripts 文件夹中，然后双击我们的脚本文件编辑我们的脚本。</p>
+<p><img src="http://pij34n7du.bkt.clouddn.com/pjt2_img15.png" alt="诶呀，图片加载出了点问题！"></p>
+<p>脚本文件名： Rotation</p>
+<p>代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rotation</span> :</span> MonoBehaviour &#123;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">FixedUpdate</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    transform.Rotate(<span class="keyword">new</span> Vector3(<span class="number">15</span>, <span class="number">30</span>, <span class="number">45</span>) * Time.deltaTime);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>回到 Unity 编辑器运行我们的游戏就可以看到 Pickup 开始自己转了起来。</p>
+<h3 id="UI-的控制"><a href="#UI-的控制" class="headerlink" title="UI 的控制"></a>UI 的控制</h3><p>打开我们的 PlayerController 脚本，我们在其中编辑 UI 的控制脚本。</p>
+<p>脚本文件名：PlayerController</p>
+<p>代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="comment">//切记一定要调用 UI</span></span><br><span class="line"><span class="keyword">using</span> UnityEngine.UI;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PlayerController</span> :</span> MonoBehaviour &#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//public 公共的，会使此变量显示在 unity 编辑器中方便我们调节数值</span></span><br><span class="line"><span class="comment">//此处定义一个 speed 变量是为了控制 Player 的运动速度</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">float</span> speed;</span><br><span class="line"><span class="comment">//获取我们创建的 CountText</span></span><br><span class="line"><span class="keyword">public</span> Text countText;</span><br><span class="line"><span class="comment">//获取我们的创建的 WinText</span></span><br><span class="line"><span class="keyword">public</span> Text winText;</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义个变量记录我们的得分</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> count;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Start</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">//调用我们的自定义函数 SetCount</span></span><br><span class="line">    SetCount();</span><br><span class="line">    <span class="comment">//初始化我们的winText里的文本为空，功能相当于隐藏了此文本</span></span><br><span class="line">    winText.text = <span class="string">""</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">FixedUpdate</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//获取横向要使 Player 位移的量</span></span><br><span class="line">    <span class="keyword">float</span> moveHorizontal = Input.GetAxis(<span class="string">"Horizontal"</span>);</span><br><span class="line">    <span class="comment">//获取纵向要使 Player 位移的量</span></span><br><span class="line">    <span class="keyword">float</span> moveVertical = Input.GetAxis(<span class="string">"Vertical"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义一个新的三维向量，来确定 Player 的运行方向</span></span><br><span class="line">    Vector3 movement = <span class="keyword">new</span> Vector3(moveHorizontal, <span class="number">0.0f</span>, moveVertical);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//给 Player 添加一个力使其运动，力的大小我们可以在 Unity 编辑器中编辑</span></span><br><span class="line">    <span class="comment">//这里再乘以一个Time.deltaTime是为了使 Player 完成的是每秒移动 speed 米，而不是每帧 speed 米，你们可以试试将这个Time.detalTime删去后 Player 的运行效果</span></span><br><span class="line">    GetComponent&lt;Rigidbody&gt;().AddForce(movement * Time.deltaTime * speed);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerEnter</span><span class="params">(Collider other)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//当 Player 碰到了物体的 Tag 名为 PickUp 的物体时运行 if 的程序</span></span><br><span class="line">    <span class="comment">//为何要加 Tag呢？因为 Player 在运行中会碰到很多东西，比如：地面、墙壁，这些都不是我想要销毁的物体，所以我们给我们需要销毁的物体添加个“名字”</span></span><br><span class="line">    <span class="keyword">if</span> (other.gameObject.tag == <span class="string">"PickUp"</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//销毁 Pickup</span></span><br><span class="line">        Destroy(other.gameObject);</span><br><span class="line">        <span class="comment">//分数+1</span></span><br><span class="line">        count += <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//更新 CountText 的文本内容</span></span><br><span class="line">        SetCount();</span><br><span class="line">        <span class="comment">//当我们的分数大于我们定义的 Pickup 的个数(因为我创建了8个 Pickup，所以我的是 count &gt;= 8)</span></span><br><span class="line">        <span class="keyword">if</span> (count &gt;= <span class="number">8</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//给我们的 WinText 的文本内添加获胜内容，其功能也就是显示获胜信息</span></span><br><span class="line">            winText.text = <span class="string">"You Win!"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetCount</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//使我们的 CountText 显示分数，其格式为 Count：[分数]</span></span><br><span class="line">    countText.text = <span class="string">"Count:"</span> + count;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>保存我们的代码并打开 Unity 编辑器，选择 Player 物体后将我们的创建的 CountText 和 WinText 物体拖至 PlayerCOntroller 脚本下方相对应的地方，然后运行我们的游戏，此时我们的 Roll a ball 的游戏已经制作完成了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>我们写完代码一定要记得将我们需要使用到的物体挂上，不然运行时没有效果或者报错。</li>
+<li>Tag 的添加一定要注意自己的大小写，在脚本添加中判断物体的 Tag 时一定要与我们创建的 Tag 完全一样。</li>
+<li>其中游戏的实现可能会有很多种方法，自己可以翻阅 Unity 官方的脚本文档然后去尝试使用其他的一些方法来实现我们的游戏。</li>
+<li>如果自己有能力，可以尝试改编游戏加入自己的想法，然后一一去实现它，这样对于我们的游戏开发很有帮助。</li>
+<li>游戏开发其实很简单，但是如果想要真正的在这个领域成为“大牛”级别的人物，还需要很多很多的努力，我们一起坚持，一起努力！</li>
+</ol>
+<p><strong>欢迎大家收藏我的博客，我会努力更新更多的作品的，给自己加个油！</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="NoahCode 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="NoahCode 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    NoahCode
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://noahcodemonkey.top/2018/11/15/2018-11-15-Unity官方案例-Roll-a-ball/" title="Unity官方案例--Roll a ball">http://noahcodemonkey.top/2018/11/15/2018-11-15-Unity官方案例-Roll-a-ball/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Unity/" rel="tag"># Unity</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/15/2018-11-15-Unity官方案例进阶-Roll-a-ball/" rel="prev" title="Unity官方案例进阶--Roll a ball">
+                <i class="fa fa-chevron-left"></i> Unity官方案例进阶--Roll a ball
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/15/2018-11-15-Atom-插件备份-Sync-Setting/" rel="next" title="Atom 插件备份--Sync Setting">
+                Atom 插件备份--Sync Setting <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bec0e6f674a049b" async="async"></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+            <a href="/">
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="NoahCode">
+            </a>
+            
+              <p class="site-author-name" itemprop="name">NoahCode</p>
+              <p class="site-description motion-element" itemprop="description">Life is short,just coding!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/NoahCodeMonkey" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目简介"><span class="nav-number">1.</span> <span class="nav-text">项目简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建工程"><span class="nav-number">2.</span> <span class="nav-text">创建工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境搭建"><span class="nav-number">3.</span> <span class="nav-text">环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建地面"><span class="nav-number">3.1.</span> <span class="nav-text">创建地面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给地面添加材质"><span class="nav-number">3.2.</span> <span class="nav-text">给地面添加材质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加墙"><span class="nav-number">3.3.</span> <span class="nav-text">添加墙</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置摄像机"><span class="nav-number">3.4.</span> <span class="nav-text">设置摄像机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加-Player"><span class="nav-number">3.5.</span> <span class="nav-text">添加 Player</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加-Pick-Up"><span class="nav-number">3.6.</span> <span class="nav-text">添加 Pick Up</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加-UI"><span class="nav-number">3.7.</span> <span class="nav-text">添加 UI</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#游戏运行"><span class="nav-number">4.</span> <span class="nav-text">游戏运行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Player-的移动"><span class="nav-number">4.1.</span> <span class="nav-text">Player 的移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相机跟随"><span class="nav-number">4.2.</span> <span class="nav-text">相机跟随</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pick-Up-的自转"><span class="nav-number">4.3.</span> <span class="nav-text">Pick Up 的自转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UI-的控制"><span class="nav-number">4.4.</span> <span class="nav-text">UI 的控制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+    <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">NoahCode</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("CIe9eqzfgaM1CagAjipV9G53-gzGzoHsz", "98cKz4OGsGVmLTQ5EIQQooDh");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 14997,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

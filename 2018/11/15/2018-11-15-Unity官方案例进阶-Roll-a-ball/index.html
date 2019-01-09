@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Unity,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="NoahCodeMonkey's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="简介经过上一次的学习，我又想改进一下这款 Roll a ball 游戏，首先这款游戏只有胜利没有失败，所以我想定义一个条件来控制它的输赢，因此我想到了如下的方案： 使我们的玩家控制 Player 在规定时间内达到一定的分数就胜利，反之则失败 任务目标这里只是大概的目标内容，还有一些细节会在后面完成的时候体现出来。  完成 PickUp 的随机刷新出现，每隔3秒刷新一个 做一个倒计时器用于显示游戏剩">
+<meta name="keywords" content="Unity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity官方案例进阶--Roll a ball">
+<meta property="og:url" content="http://noahcodemonkey.top/2018/11/15/2018-11-15-Unity官方案例进阶-Roll-a-ball/index.html">
+<meta property="og:site_name" content="NoahCodeMonkey&#39;s Blog">
+<meta property="og:description" content="简介经过上一次的学习，我又想改进一下这款 Roll a ball 游戏，首先这款游戏只有胜利没有失败，所以我想定义一个条件来控制它的输赢，因此我想到了如下的方案： 使我们的玩家控制 Player 在规定时间内达到一定的分数就胜利，反之则失败 任务目标这里只是大概的目标内容，还有一些细节会在后面完成的时候体现出来。  完成 PickUp 的随机刷新出现，每隔3秒刷新一个 做一个倒计时器用于显示游戏剩">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://pij34n7du.bkt.clouddn.com/pjt3_img01.png">
+<meta property="og:image" content="http://pij34n7du.bkt.clouddn.com/pjt3_img02.png">
+<meta property="og:image" content="http://pij34n7du.bkt.clouddn.com/pjt3_img03.png">
+<meta property="og:updated_time" content="2018-11-22T00:25:51.537Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unity官方案例进阶--Roll a ball">
+<meta name="twitter:description" content="简介经过上一次的学习，我又想改进一下这款 Roll a ball 游戏，首先这款游戏只有胜利没有失败，所以我想定义一个条件来控制它的输赢，因此我想到了如下的方案： 使我们的玩家控制 Player 在规定时间内达到一定的分数就胜利，反之则失败 任务目标这里只是大概的目标内容，还有一些细节会在后面完成的时候体现出来。  完成 PickUp 的随机刷新出现，每隔3秒刷新一个 做一个倒计时器用于显示游戏剩">
+<meta name="twitter:image" content="http://pij34n7du.bkt.clouddn.com/pjt3_img01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://noahcodemonkey.top/2018/11/15/2018-11-15-Unity官方案例进阶-Roll-a-ball/">
+
+
+
+
+
+  <title>Unity官方案例进阶--Roll a ball | NoahCodeMonkey's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <!--fork me on Github-star-->
+    <a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    <!--fork me on Github-end-->
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NoahCodeMonkey's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一点点积累，一点点奋斗</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://noahcodemonkey.top/2018/11/15/2018-11-15-Unity官方案例进阶-Roll-a-ball/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="NoahCode">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NoahCodeMonkey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Unity官方案例进阶--Roll a ball</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-15T20:17:06+08:00">
+                2018-11-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-22T08:25:51+08:00">
+                2018-11-22
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/11/15/2018-11-15-Unity官方案例进阶-Roll-a-ball/" class="leancloud_visitors" data-flag-title="Unity官方案例进阶--Roll a ball">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.4k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>经过上一次的学习，我又想改进一下这款 Roll a ball 游戏，首先这款游戏只有胜利没有失败，所以我想定义一个条件来控制它的输赢，因此我想到了如下的方案：</p>
+<p><strong>使我们的玩家控制 Player 在规定时间内达到一定的分数就胜利，反之则失败</strong></p>
+<h2 id="任务目标"><a href="#任务目标" class="headerlink" title="任务目标"></a>任务目标</h2><p>这里只是大概的目标内容，还有一些细节会在后面完成的时候体现出来。</p>
+<ol>
+<li>完成 PickUp 的随机刷新出现，每隔3秒刷新一个</li>
+<li>做一个倒计时器用于显示游戏剩余时间</li>
+<li>控制分数和时间，若玩家在规定时间内达到分数则显示 You Win！字样，Player 禁止移动；若失败，则小球爆炸并显示 Game Over！ 字样。</li>
+</ol>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>主体还是 Roll a ball 的内容，其中有一些小改动，我们在此完成一下。</p>
+<h3 id="删除场景中的所有-PickUp"><a href="#删除场景中的所有-PickUp" class="headerlink" title="删除场景中的所有 PickUp"></a>删除场景中的所有 PickUp</h3><p>因为我们要完成的是随机刷新 PickUp 物体，所以我们不需要在场景中添加 PickUp 物体，到时候会用到一个新的知识来完成我们的随机显示 PickUp 物体的操作。</p>
+<h3 id="添加倒计时文本"><a href="#添加倒计时文本" class="headerlink" title="添加倒计时文本"></a>添加倒计时文本</h3><p>因为我们需要让玩家知道游戏的剩余时间，所以我们需要添加一个用来显示时间的文本，位置我选择在了中间顶部的位置，其他设置随意。</p>
+<h3 id="细节修改"><a href="#细节修改" class="headerlink" title="细节修改"></a>细节修改</h3><p>因为最终我们显示的文本不再是只有胜利，所以将我们之前创建的 WinText 改名为 ResultText。</p>
+<h3 id="遗漏补充"><a href="#遗漏补充" class="headerlink" title="遗漏补充"></a>遗漏补充</h3><p>在官方的案例中，PickUp 是有一个黄色的材质，而我在之前做的项目中忘记添加了，所以我现在添加了一个黄色材质球给我们的 PickUp。</p>
+<p><img src="http://pij34n7du.bkt.clouddn.com/pjt3_img01.png" alt="诶呀，图片加载出了点问题！"></p>
+<p>以上就是我们的环境搭建相关的操作，下面就要开始我们的脚本编写，来实现游戏的运行了。</p>
+<h2 id="游戏运行"><a href="#游戏运行" class="headerlink" title="游戏运行"></a>游戏运行</h2><h3 id="修改以及准备"><a href="#修改以及准备" class="headerlink" title="修改以及准备"></a>修改以及准备</h3><p>我将 PlayerController 中除了将 Player 运动的脚本其余的都删除了。</p>
+<p>脚本文件名：PlayerController</p>
+<p>代码如下：</p>
+<pre><code>using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour {
+public float speed;
+
+private float moveHorizontal;
+private float moveVertical;
+private Vector3 movement;
+private void FixedUpdate()
+{
+    moveHorizontal = Input.GetAxis(&quot;Horizontal&quot;);
+    moveVertical = Input.GetAxis(&quot;Vertical&quot;);
+    movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+
+    GetComponent&lt;Rigidbody&gt;().AddForce(movement * speed * Time.deltaTime);
+}
+}
+</code></pre><p>我将剩下的代码贴在上方了，有不清楚的或者项目删除了的可以直接复制过去。</p>
+<h3 id="创建-GameController-脚本"><a href="#创建-GameController-脚本" class="headerlink" title="创建 GameController 脚本"></a>创建 GameController 脚本</h3><p>还是在我们的 Player 物体上添加脚本取名为 GameController ，我定义它用来控制整个游戏的运行脚本，其实我们游戏的改变主要就是体现在此脚本的编写，所以当我们完成此脚本的编写也就意味着我们游戏的完成，废话不多说了下面我们就来完成它。</p>
+<h3 id="删除补回"><a href="#删除补回" class="headerlink" title="删除补回"></a>删除补回</h3><p>因为我们将原来 PlayerController 脚本中除了控制小球运动的代码都删除了，所以需要先补充一下 Planyer 与 PickUp 的碰撞以及分数控制的相关代码，此时只是补回后面还会有更改。</p>
+<p>脚本文件名：GameController</p>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UI;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GameController</span> :</span> MonoBehaviour &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Text countText;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        count = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        SetCount();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerEnter</span><span class="params">(Collider other)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (other.gameObject.tag == <span class="string">"PickUp"</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            Destroy(other.gameObject);</span><br><span class="line">            count++;</span><br><span class="line">            SetCount();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">SetCount</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        countText.text = <span class="string">"Count:"</span> + count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="目标一：刷新-PickUp-物体"><a href="#目标一：刷新-PickUp-物体" class="headerlink" title="目标一：刷新 PickUp 物体"></a>目标一：刷新 PickUp 物体</h3><p>在此我们要完成的是<strong>让我们的 PickUp 物体在地面上的随机位置每3秒刷新一个</strong>。</p>
+<p>这其中我们会用到几个新的知识，有需要的话最好还是去网上找找资料了解一下或者翻阅官网的API。</p>
+<ol>
+<li>Clone 克隆物体</li>
+<li>Randam 随机类</li>
+</ol>
+<p>脚本文件名：GameController</p>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UI;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GameController</span> :</span> MonoBehaviour &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Text countText;</span><br><span class="line">    <span class="comment">//用于添加 PickUp 物体，之后克隆要用</span></span><br><span class="line">    <span class="keyword">public</span> GameObject pickUp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count;</span><br><span class="line">    <span class="comment">//定义一个三维向量的值用于存储克隆物体的位置</span></span><br><span class="line">    <span class="keyword">private</span> Vector3 newPickUpPt;</span><br><span class="line">    <span class="comment">//定义一个需要等待克隆物体的时间，根据目标应该赋值为3</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> fireRate;</span><br><span class="line">    <span class="comment">//定义一个下一次克隆物体的时间</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> nextFire;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        count = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//给 fireRate 赋值，控制克隆物体的间隔时间</span></span><br><span class="line">        fireRate = <span class="number">3f</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        SetCount();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//判断游戏时间是否大于我们需要的它克隆的时间</span></span><br><span class="line">        <span class="keyword">if</span> (Time.time &gt; nextFire)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//计算下一次克隆时的时间</span></span><br><span class="line">            nextFire = Time.time + fireRate;</span><br><span class="line">            <span class="comment">//给我们的 PickUp 随机一个位置</span></span><br><span class="line">            newPickUpPt = <span class="keyword">new</span> Vector3(Random.Range(<span class="number">-8</span>, <span class="number">8</span>), <span class="number">1f</span>, Random.Range(<span class="number">-8</span>, <span class="number">8</span>));</span><br><span class="line">            <span class="comment">//这就是克隆的操作脚本了</span></span><br><span class="line">            <span class="comment">//Instantiate(需要克隆的物体，克隆物体的 Pothion 值，克隆物体的 Rotation值)</span></span><br><span class="line">            <span class="comment">//此处我们要克隆的物体是 PickUp，他的位置就是我们之前随机存储的那个位置，Quaternion.identity 的意思是与原物体的 Rotation 值保持不变</span></span><br><span class="line">            Instantiate(pickUp, newPickUpPt, Quaternion.identity);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerEnter</span><span class="params">(Collider other)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (other.gameObject.tag == <span class="string">"PickUp"</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            Destroy(other.gameObject);</span><br><span class="line">            count++;</span><br><span class="line">            SetCount();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">SetCount</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        countText.text = <span class="string">"Count:"</span> + count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>脚本我们现在就写完了，保存一下脚本，然后来到我们的 Unity 编辑器中，给我们 Player 物体中的 GameController 脚本中的 Player 物体添加一下，然后运行就可以看到 PickUp 开始有规律的创建了。</p>
+<h3 id="控制倒计时器"><a href="#控制倒计时器" class="headerlink" title="控制倒计时器"></a>控制倒计时器</h3><p>做倒计时器又需要用到一个新的知识–协程，这个知识还是很重要的，最好先去翻阅些资料了解一下它。</p>
+<p>脚本文件名：GameController</p>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UI;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GameController</span> :</span> MonoBehaviour &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Text countText;</span><br><span class="line">    <span class="comment">//用于添加时间 Text 物体</span></span><br><span class="line">    <span class="keyword">public</span> Text timeText;</span><br><span class="line">    <span class="comment">//用于添加 PickUp 物体，之后克隆要用</span></span><br><span class="line">    <span class="keyword">public</span> GameObject pickUp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count;</span><br><span class="line">    <span class="comment">//定义一个三维向量的值用于存储克隆物体的位置</span></span><br><span class="line">    <span class="keyword">private</span> Vector3 newPickUpPt;</span><br><span class="line">    <span class="comment">//定义一个需要等待克隆物体的时间，根据目标应该赋值为3</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> fireRate;</span><br><span class="line">    <span class="comment">//定义一个下一次克隆物体的时间</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> nextFire;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> time;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        count = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//给 fireRate 赋值，控制克隆物体的间隔时间</span></span><br><span class="line">        fireRate = <span class="number">3f</span>;</span><br><span class="line">        time = <span class="number">8</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        SetCount();</span><br><span class="line">        <span class="comment">//开始我们的协程</span></span><br><span class="line">        StartCoroutine(Timer());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> IEnumerator <span class="title">Timer</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//定义一个循环，条件为要time&gt;0</span></span><br><span class="line">        <span class="keyword">while</span> (time &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//间隔1秒继续执行一下代码</span></span><br><span class="line">            <span class="function">yield <span class="keyword">return</span> <span class="keyword">new</span> <span class="title">WaitForSeconds</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line">            <span class="comment">//time自减1</span></span><br><span class="line">            time--;</span><br><span class="line">            <span class="comment">//更新我们的时间文本</span></span><br><span class="line">            SetTime();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//结束我们的协程</span></span><br><span class="line">        StopCoroutine(Timer());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//判断游戏时间是否大于我们需要的它克隆的时间</span></span><br><span class="line">        <span class="keyword">if</span> (Time.time &gt; nextFire)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//计算下一次克隆时的时间</span></span><br><span class="line">            nextFire = Time.time + fireRate;</span><br><span class="line">            <span class="comment">//给我们的 PickUp 随机一个位置</span></span><br><span class="line">            newPickUpPt = <span class="keyword">new</span> Vector3(Random.Range(<span class="number">-8</span>, <span class="number">8</span>), <span class="number">1f</span>, Random.Range(<span class="number">-8</span>, <span class="number">8</span>));</span><br><span class="line">            <span class="comment">//这就是克隆的操作脚本了</span></span><br><span class="line">            <span class="comment">//Instantiate(需要克隆的物体，克隆物体的 Pothion 值，克隆物体的 Rotation值)</span></span><br><span class="line">            <span class="comment">//此处我们要克隆的物体是 PickUp，他的位置就是我们之前随机存储的那个位置，Quaternion.identity 的意思是与原物体的 Rotation 值保持不变</span></span><br><span class="line">            Instantiate(pickUp, newPickUpPt, Quaternion.identity);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerEnter</span><span class="params">(Collider other)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (other.gameObject.tag == <span class="string">"PickUp"</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            Destroy(other.gameObject);</span><br><span class="line">            count++;</span><br><span class="line">            SetCount();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">SetCount</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        countText.text = <span class="string">"Count:"</span> + count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">SetTime</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        timeText.text = time.ToString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="控制结果"><a href="#控制结果" class="headerlink" title="控制结果"></a>控制结果</h3><p>方法挺多的，可以自己想想怎么去完成。</p>
+<p>脚本文件名：GameController</p>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UI;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GameController</span> :</span> MonoBehaviour &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Text countText;</span><br><span class="line">    <span class="comment">//用于添加时间 Text 物体</span></span><br><span class="line">    <span class="keyword">public</span> Text timeText;</span><br><span class="line">    <span class="keyword">public</span> Text resultText;</span><br><span class="line">    <span class="comment">//用于添加 PickUp 物体，之后克隆要用</span></span><br><span class="line">    <span class="keyword">public</span> GameObject pickUp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count;</span><br><span class="line">    <span class="comment">//定义一个三维向量的值用于存储克隆物体的位置</span></span><br><span class="line">    <span class="keyword">private</span> Vector3 newPickUpPt;</span><br><span class="line">    <span class="comment">//定义一个需要等待克隆物体的时间，根据目标应该赋值为3</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> fireRate;</span><br><span class="line">    <span class="comment">//定义一个下一次克隆物体的时间</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> nextFire;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> time;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        count = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//给 fireRate 赋值，控制克隆物体的间隔时间</span></span><br><span class="line">        fireRate = <span class="number">3f</span>;</span><br><span class="line">        time = <span class="number">8</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        SetCount();</span><br><span class="line">        <span class="comment">//开始我们的协程</span></span><br><span class="line">        StartCoroutine(Timer());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> IEnumerator <span class="title">Timer</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//定义一个循环，条件为要time&gt;0</span></span><br><span class="line">        <span class="keyword">while</span> (time &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//间隔1秒继续执行一下代码</span></span><br><span class="line">            <span class="function">yield <span class="keyword">return</span> <span class="keyword">new</span> <span class="title">WaitForSeconds</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line">            <span class="comment">//time自减1</span></span><br><span class="line">            time--;</span><br><span class="line">            <span class="comment">//更新我们的时间文本</span></span><br><span class="line">            SetTime();</span><br><span class="line">            <span class="comment">//调用我们创建的控制结果函数</span></span><br><span class="line">            <span class="keyword">if</span> (time &lt;= <span class="number">0</span> &amp;&amp; count &lt; <span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                resultText.text = <span class="string">"Game Over!"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (count &gt;= <span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                resultText.text = <span class="string">"You Win!"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//结束我们的协程</span></span><br><span class="line">        StopCoroutine(Timer());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//判断游戏时间是否大于我们需要的它克隆的时间</span></span><br><span class="line">        <span class="keyword">if</span> (Time.time &gt; nextFire &amp;&amp; time &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//计算下一次克隆时的时间</span></span><br><span class="line">            nextFire = Time.time + fireRate;</span><br><span class="line">            <span class="comment">//给我们的 PickUp 随机一个位置</span></span><br><span class="line">            newPickUpPt = <span class="keyword">new</span> Vector3(Random.Range(<span class="number">-8</span>, <span class="number">8</span>), <span class="number">1f</span>, Random.Range(<span class="number">-8</span>, <span class="number">8</span>));</span><br><span class="line">            <span class="comment">//这就是克隆的操作脚本了</span></span><br><span class="line">            <span class="comment">//Instantiate(需要克隆的物体，克隆物体的 Pothion 值，克隆物体的 Rotation值)</span></span><br><span class="line">            <span class="comment">//此处我们要克隆的物体是 PickUp，他的位置就是我们之前随机存储的那个位置，Quaternion.identity 的意思是与原物体的 Rotation 值保持不变</span></span><br><span class="line">            Instantiate(pickUp, newPickUpPt, Quaternion.identity);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerEnter</span><span class="params">(Collider other)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (other.gameObject.tag == <span class="string">"PickUp"</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            Destroy(other.gameObject);</span><br><span class="line">            count++;</span><br><span class="line">            SetCount();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">SetCount</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        countText.text = <span class="string">"Count:"</span> + count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">SetTime</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        timeText.text = time.ToString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="游戏的完善"><a href="#游戏的完善" class="headerlink" title="游戏的完善"></a>游戏的完善</h3><p>这是我们此游戏的最后部分，用于完善一些游戏中缺乏的地方，也添加了一些比较有意思的东西，来使游戏更加具有趣味性。</p>
+<h4 id="完善物体的克隆创建"><a href="#完善物体的克隆创建" class="headerlink" title="完善物体的克隆创建"></a>完善物体的克隆创建</h4><p>当游戏结束时，我们的克隆还在不停操作，这是我们不愿意看到的，所以接下来我们来完善它。</p>
+<p>其实完善很简单，只需在我们克隆创建操作的 if 判断中添加条件就可以了。</p>
+<p>脚本文件名：GameController</p>
+<p>代码如下：</p>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//判断游戏时间是否大于我们需要的它克隆的时间</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">Time</span>.<span class="built_in">time</span> &gt; nextFire &amp;&amp; <span class="built_in">time</span> &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//计算下一次克隆时的时间</span></span><br><span class="line">            nextFire = <span class="built_in">Time</span>.<span class="built_in">time</span> + fireRate;</span><br><span class="line">            <span class="comment">//给我们的 PickUp 随机一个位置</span></span><br><span class="line">            newPickUpPt = new Vector3(<span class="built_in">Random</span>.Range(-<span class="number">8</span>, <span class="number">8</span>), <span class="number">1</span>f, <span class="built_in">Random</span>.Range(-<span class="number">8</span>, <span class="number">8</span>));</span><br><span class="line">            <span class="comment">//这就是克隆的操作脚本了</span></span><br><span class="line">            <span class="comment">//Instantiate(需要克隆的物体，克隆物体的 Pothion 值，克隆物体的 Rotation值)</span></span><br><span class="line">            <span class="comment">//此处我们要克隆的物体是 PickUp，他的位置就是我们之前随机存储的那个位置，Quaternion.identity 的意思是与原物体的 Rotation 值保持不变</span></span><br><span class="line">            Instantiate(pickUp, newPickUpPt, Quaternion.identity);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="完善倒计时器"><a href="#完善倒计时器" class="headerlink" title="完善倒计时器"></a>完善倒计时器</h4><p>当我们游戏胜利后会发现我们的倒计时器依旧还在运行，所以这是有问题的，因此接下来我们就来完善它。</p>
+<p>来到我们打代码，会发现我们的游戏胜利放在了倒计时器中的循环中，因此只要当我们胜利之后添加一个 个 Break 语句跳出循环就可以完成我们的倒计时停止的操作了。</p>
+<p>脚本文件名：GmaeController</p>
+<p>代买如下：</p>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> IEnumerator Timer()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//定义一个循环，条件为要time&gt;0</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="built_in">time</span> &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//间隔1秒继续执行一下代码</span></span><br><span class="line">            yield return new WaitForSeconds(<span class="number">1</span>);</span><br><span class="line">            <span class="comment">//time自减1</span></span><br><span class="line">            <span class="built_in">time</span>--;</span><br><span class="line">            <span class="comment">//更新我们的时间文本</span></span><br><span class="line">            SetTime();</span><br><span class="line">            <span class="comment">//调用我们创建的控制结果函数</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">time</span> &lt;= <span class="number">0</span> &amp;&amp; <span class="built_in">count</span> &lt; <span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                resultText.<span class="built_in">text</span> = <span class="string">"Game Over!"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">count</span> &gt;= <span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                resultText.<span class="built_in">text</span> = <span class="string">"You Win!"</span>;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//结束我们的协程</span></span><br><span class="line">        StopCoroutine(Timer());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>写完代码后运行，然后完成我们的两个小球的条件后，会发现我们的倒计时停止了，耶！完成啦！但是我们又会惊喜的发现刚完成的游戏结束后停止创建物体的任务并没有完善，我们只考虑到了游戏失败时停止创建，若当游戏胜利结束时并没有考虑到，所以我们又要回过头来重新完善我们之前的任务。</p>
+<h4 id="补：完善物体的克隆创建"><a href="#补：完善物体的克隆创建" class="headerlink" title="补：完善物体的克隆创建"></a>补：完善物体的克隆创建</h4><p>要完善其实也很简单，只需要在我们创建的条件中再添加一个 Count 要小于我们的目标值就可以了。</p>
+<p>脚本文件名： GameController</p>
+<p>代码如下：</p>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//判断游戏时间是否大于我们需要的它克隆的时间</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">Time</span>.<span class="built_in">time</span> &gt; nextFire &amp;&amp; <span class="built_in">time</span> &gt; <span class="number">0</span> &amp;&amp; <span class="built_in">count</span> &lt; <span class="number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//计算下一次克隆时的时间</span></span><br><span class="line">            nextFire = <span class="built_in">Time</span>.<span class="built_in">time</span> + fireRate;</span><br><span class="line">            <span class="comment">//给我们的 PickUp 随机一个位置</span></span><br><span class="line">            newPickUpPt = new Vector3(<span class="built_in">Random</span>.Range(-<span class="number">8</span>, <span class="number">8</span>), <span class="number">1</span>f, <span class="built_in">Random</span>.Range(-<span class="number">8</span>, <span class="number">8</span>));</span><br><span class="line">            <span class="comment">//这就是克隆的操作脚本了</span></span><br><span class="line">            <span class="comment">//Instantiate(需要克隆的物体，克隆物体的 Pothion 值，克隆物体的 Rotation值)</span></span><br><span class="line">            <span class="comment">//此处我们要克隆的物体是 PickUp，他的位置就是我们之前随机存储的那个位置，Quaternion.identity 的意思是与原物体的 Rotation 值保持不变</span></span><br><span class="line">            Instantiate(pickUp, newPickUpPt, Quaternion.identity);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="趣味添加：游戏失败小球爆炸效果"><a href="#趣味添加：游戏失败小球爆炸效果" class="headerlink" title="趣味添加：游戏失败小球爆炸效果"></a>趣味添加：游戏失败小球爆炸效果</h4><p>爆炸效果是从网上找的，在此感谢<strong>TPMer</strong>博主提供，爆炸效果需要用到的素材请到他的CSDN博客最底处下载。</p>
+<p><a href="https://blog.csdn.net/six_sex/article/details/72857295" target="_blank" rel="noopener">TPMerd的CSDN博客</a></p>
+<p>素材下载完成后记住他的下载位置当我们导入时需要用到，再打开我们的 Unity 编辑器在菜单栏中的 Assets 中找到 Import Package 再选择 Custom Package 选项来添加我们的素材，找到我们之前下载的素材包打开，在 Import Unity Package 界面中，我们勾去第一个 000.unity 场景文件后选择右下角的 Import 选项添加我们的素材。</p>
+<p><img src="http://pij34n7du.bkt.clouddn.com/pjt3_img02.png" alt="诶呀，图片加载出了点问题！"></p>
+<p>然后编辑我们的脚本文件来完成我们的小球爆炸效果。</p>
+<p>脚本文件名：GameController</p>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UI;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GameController</span> :</span> MonoBehaviour &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Text countText;</span><br><span class="line">    <span class="comment">//用于添加时间 Text 物体</span></span><br><span class="line">    <span class="keyword">public</span> Text timeText;</span><br><span class="line">    <span class="keyword">public</span> Text resultText;</span><br><span class="line">    <span class="comment">//用于添加 PickUp 物体，之后克隆要用</span></span><br><span class="line">    <span class="keyword">public</span> GameObject pickUp;</span><br><span class="line">    <span class="comment">//用于添加我们的爆炸物体</span></span><br><span class="line">    <span class="keyword">public</span> GameObject Bang;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count;</span><br><span class="line">    <span class="comment">//定义一个三维向量的值用于存储克隆物体的位置</span></span><br><span class="line">    <span class="keyword">private</span> Vector3 newPickUpPt;</span><br><span class="line">    <span class="comment">//定义一个需要等待克隆物体的时间，根据目标应该赋值为3</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> fireRate;</span><br><span class="line">    <span class="comment">//定义一个下一次克隆物体的时间</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> nextFire;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> time;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        count = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//给 fireRate 赋值，控制克隆物体的间隔时间</span></span><br><span class="line">        fireRate = <span class="number">3f</span>;</span><br><span class="line">        time = <span class="number">8</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        SetCount();</span><br><span class="line">        <span class="comment">//开始我们的协程</span></span><br><span class="line">        StartCoroutine(Timer());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> IEnumerator <span class="title">Timer</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//定义一个循环，条件为要time&gt;0</span></span><br><span class="line">        <span class="keyword">while</span> (time &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//间隔1秒继续执行一下代码</span></span><br><span class="line">            <span class="function">yield <span class="keyword">return</span> <span class="keyword">new</span> <span class="title">WaitForSeconds</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line">            <span class="comment">//time自减1</span></span><br><span class="line">            time--;</span><br><span class="line">            <span class="comment">//更新我们的时间文本</span></span><br><span class="line">            SetTime();</span><br><span class="line">            <span class="comment">//调用我们创建的控制结果函数</span></span><br><span class="line">            <span class="keyword">if</span> (time &lt;= <span class="number">0</span> &amp;&amp; count &lt; <span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                resultText.text = <span class="string">"Game Over!"</span>;</span><br><span class="line">                <span class="comment">//将 Player 物体销毁</span></span><br><span class="line">                Destroy(<span class="keyword">this</span>.gameObject);</span><br><span class="line">                <span class="comment">//克隆我们的爆炸物体来代替我们的 Player 物体</span></span><br><span class="line">                Instantiate(Bang, <span class="keyword">this</span>.transform.position, <span class="keyword">this</span>.transform.rotation);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (count &gt;= <span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                resultText.text = <span class="string">"You Win!"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//结束我们的协程</span></span><br><span class="line">        StopCoroutine(Timer());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//判断游戏时间是否大于我们需要的它克隆的时间</span></span><br><span class="line">        <span class="keyword">if</span> (Time.time &gt; nextFire &amp;&amp; time &gt; <span class="number">0</span> &amp;&amp; count &lt; <span class="number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//计算下一次克隆时的时间</span></span><br><span class="line">            nextFire = Time.time + fireRate;</span><br><span class="line">            <span class="comment">//给我们的 PickUp 随机一个位置</span></span><br><span class="line">            newPickUpPt = <span class="keyword">new</span> Vector3(Random.Range(<span class="number">-8</span>, <span class="number">8</span>), <span class="number">1f</span>, Random.Range(<span class="number">-8</span>, <span class="number">8</span>));</span><br><span class="line">            <span class="comment">//这就是克隆的操作脚本了</span></span><br><span class="line">            <span class="comment">//Instantiate(需要克隆的物体，克隆物体的 Pothion 值，克隆物体的 Rotation值)</span></span><br><span class="line">            <span class="comment">//此处我们要克隆的物体是 PickUp，他的位置就是我们之前随机存储的那个位置，Quaternion.identity 的意思是与原物体的 Rotation 值保持不变</span></span><br><span class="line">            Instantiate(pickUp, newPickUpPt, Quaternion.identity);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerEnter</span><span class="params">(Collider other)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (other.gameObject.tag == <span class="string">"PickUp"</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            Destroy(other.gameObject);</span><br><span class="line">            count++;</span><br><span class="line">            SetCount();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">SetCount</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        countText.text = <span class="string">"Count:"</span> + count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">SetTime</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        timeText.text = time.ToString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当我们将脚本写完保存后，打开 Unity 编辑器在我们的 Player 物体中 GameController 脚本下方的 Bang 处添加我们 Prefabs 文件下的爆炸文件后运行，当我们游戏结束时会发现我们的 Player 物体爆炸了，但是我们下方会有红色文字报错。</p>
+<p><img src="http://pij34n7du.bkt.clouddn.com/pjt3_img03.png" alt="诶呀，图片加载出了点问题！"></p>
+<p>它的意思大体为 <strong>物体已经被销毁了，但是游戏依旧还在使用它</strong> ，然后在找到下面的提示可以看到问题出现在了我们的 CameraController 文件中的第18行，我们顺着找过去看到的是我们用来使我们的相机位置为 Player 位置加上一个固定值的代码，找到了病因我们就去解决了。</p>
+<p>脚本文件名：CameraController</p>
+<p>代码如下：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">CameraController</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> GameObject player;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Vector3 offset;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        offset = transform.position - player.transform.position;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="literal">null</span> != player)</span><br><span class="line">        &#123;</span><br><span class="line">            transform.position = player.transform.position + offset;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解决方法很简单就是将我们的相机位置代码放在一个 if 判断语句中就行了，判断的条件就是我们的 Player 物体存在就行了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上就是这篇文章中的所有内容了，因为本人还是新手所以在很多内容上理解可能很不准确或者错误的，希望各位朋友能像我提出，我一定会悉心学习并改正的，我也会努力让自己与目标更加靠近的！！！</p>
+<p><strong>欢迎大家收藏我的博客，我会努力更新更多的作品的，给自己加个油！</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="NoahCode 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="NoahCode 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    NoahCode
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://noahcodemonkey.top/2018/11/15/2018-11-15-Unity官方案例进阶-Roll-a-ball/" title="Unity官方案例进阶--Roll a ball">http://noahcodemonkey.top/2018/11/15/2018-11-15-Unity官方案例进阶-Roll-a-ball/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Unity/" rel="tag"># Unity</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/15/2018-11-15-Unity官方案例-Roll-a-ball/" rel="next" title="Unity官方案例--Roll a ball">
+                Unity官方案例--Roll a ball <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bec0e6f674a049b" async="async"></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+            <a href="/">
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="NoahCode">
+            </a>
+            
+              <p class="site-author-name" itemprop="name">NoahCode</p>
+              <p class="site-description motion-element" itemprop="description">Life is short,just coding!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/NoahCodeMonkey" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#任务目标"><span class="nav-number">1.1.</span> <span class="nav-text">任务目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境搭建"><span class="nav-number">1.2.</span> <span class="nav-text">环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#删除场景中的所有-PickUp"><span class="nav-number">1.2.1.</span> <span class="nav-text">删除场景中的所有 PickUp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加倒计时文本"><span class="nav-number">1.2.2.</span> <span class="nav-text">添加倒计时文本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#细节修改"><span class="nav-number">1.2.3.</span> <span class="nav-text">细节修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遗漏补充"><span class="nav-number">1.2.4.</span> <span class="nav-text">遗漏补充</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#游戏运行"><span class="nav-number">1.3.</span> <span class="nav-text">游戏运行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改以及准备"><span class="nav-number">1.3.1.</span> <span class="nav-text">修改以及准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-GameController-脚本"><span class="nav-number">1.3.2.</span> <span class="nav-text">创建 GameController 脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除补回"><span class="nav-number">1.3.3.</span> <span class="nav-text">删除补回</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目标一：刷新-PickUp-物体"><span class="nav-number">1.3.4.</span> <span class="nav-text">目标一：刷新 PickUp 物体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制倒计时器"><span class="nav-number">1.3.5.</span> <span class="nav-text">控制倒计时器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制结果"><span class="nav-number">1.3.6.</span> <span class="nav-text">控制结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#游戏的完善"><span class="nav-number">1.3.7.</span> <span class="nav-text">游戏的完善</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#完善物体的克隆创建"><span class="nav-number">1.3.7.1.</span> <span class="nav-text">完善物体的克隆创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完善倒计时器"><span class="nav-number">1.3.7.2.</span> <span class="nav-text">完善倒计时器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#补：完善物体的克隆创建"><span class="nav-number">1.3.7.3.</span> <span class="nav-text">补：完善物体的克隆创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#趣味添加：游戏失败小球爆炸效果"><span class="nav-number">1.3.7.4.</span> <span class="nav-text">趣味添加：游戏失败小球爆炸效果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+    <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">NoahCode</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("CIe9eqzfgaM1CagAjipV9G53-gzGzoHsz", "98cKz4OGsGVmLTQ5EIQQooDh");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 14997,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
