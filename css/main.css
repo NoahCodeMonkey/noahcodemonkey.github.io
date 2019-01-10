@@ -2016,7 +2016,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #a7ffff;
+  background: #c35853;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2914,6 +2914,20 @@ img:hover {
   -ms-transform: initial;
   -o-transform: initial;
   transform: initial;
+}
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #eee;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #ccc;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #f79533;
 }
 @-moz-keyframes heartAnimate {
   0%, 100% {
