@@ -25,12 +25,16 @@
   <entry>
     <title><![CDATA[Atom 插件备份--Sync Setting]]></title>
     <url>%2F2018%2F11%2F15%2F2018-11-15-Atom-%E6%8F%92%E4%BB%B6%E5%A4%87%E4%BB%BD-Sync-Setting%2F</url>
-    <content type="text"><![CDATA[简述当我们使用的 Atom 插件装的越来越多，相关的配置也越来越个性化，一旦我们的电脑重装后就需要重新安装我们的开发环境，这将会是一件令人头疼的事情，但是现在我发现了一款备份的插件推荐给大家，它就是–Sync Setting。 安装打开我们的 Atom 在菜单栏 File 中找到 Settings 选项，选中的 Install 界面中搜索 Sync Setting 插件，然后点击 install 下载即可,之后可以在 Packages 中找打我们下载的所有插件。 配置 首先我们打开 Sync Setting 的插件配置界面看到，我们需要填写两个内容才可以备份，下面我就一步一步的教大家如何去完成。 第一步：创建 personal access token 打开我们的 GitHub，点击我们的头像选择 Settings 选项，在 Settings 界面中选择 Developer Settings，然后就看到我们需要找到的 Personal access tokens,然后点击右上角的 Generate new token 创建。 注：一定要记得勾选gist选项 点击左下角的 Generate token 创建，然后复制生成的 token 序列粘贴到 Sync Setting 配置界面图中的第一个输入框中。 第二步：创建 gist 还是点击我们的头像，选择 Your gists 后在输入框中随便输入点信息，然后点击 Create secret gist 创建一个gist。 gist创建成功后，我们复制生成的 gistID 将其粘贴到Sync Setting 配置界面图中的第二个输入框中。 以上就是我们的 Sync Setting 所有的配置操作了，那我们该如何备份呢？ 注：最好将两个数据备份一下，以便以后恢复用到。若没有备份需要恢复，可以看文章最下方的教程 备份打开我们 Atom 的文档编辑页面（Crtl + Shift + P），在其中输入”Syn”选中第二个 Backup 选项就可以开始备份了。 ../imgs/img_01/img07.png当 Atom 编辑器右上角出现绿色的备份成功的提示消息，就意味着我们的备份成功啦。 恢复(备份)在新的 Atom 编辑器中下载 Sync Setting 插件，在其配置界面中将我们备份的两个数据分别填入两个输入框中，打开我们 Atom 的文档编辑页面（Crtl + Shift + P），在其中输入”Syn”选中第三个 Restore 选项就可以恢复了。 恢复(未备份)我们缺的就是两个数据就可以完成ifu操作了，所以我们只需要想方法获取到这两个数据就可以了。 personal access token打开我们的 GitHub 找到我们之前创建的 personal access token(在Settings中,前面写的很详细)，然后会看到有个红色字体的按钮，它的意思是重新生成令牌，我们就可以重新生成一个令牌。 GistID打开我们的 GitHub 还是选择 Your gists 到达我们的 gist 的界面，然后选择我们的右上角的 See all of your gists ，找到我们之前创建的 gist。 然后我们点击 init.coffee，就到达了我们备份 Atom 插件信息的一个库. 之后我们以发现我们所需要的 gistID 就在我们的网址结尾处，直接将他复制过去即可。 现在我们所需要的两个数据全都有了，就可以开始我们的恢复操作了，不过在此还是推荐各位朋友记得备份一下，免得花这么多时间去找。 欢迎大家收藏我的博客，我会努力更新更多的作品的，给自己加个油！]]></content>
+    <content type="text"><![CDATA[当我们使用的 Atom 插件装的越来越多，相关的配置也越来越个性化，一旦我们的电脑重装后就需要重新安装我们的开发环境，这将会是一件令人头疼的事情，但是现在我发现了一款备份的插件推荐给大家，它就是–Sync Setting。 安装打开我们的 Atom 在菜单栏 File 中找到 Settings 选项，选中的 Install 界面中搜索 Sync Setting 插件，然后点击 install 下载即可,之后可以在 Packages 中找打我们下载的所有插件。 配置 首先我们打开 Sync Setting 的插件配置界面看到，我们需要填写两个内容才可以备份，下面我就一步一步的教大家如何去完成。 第一步：创建 personal access token 打开我们的 GitHub，点击我们的头像选择 Settings 选项，在 Settings 界面中选择 Developer Settings，然后就看到我们需要找到的 Personal access tokens,然后点击右上角的 Generate new token 创建。 注：一定要记得勾选gist选项 点击左下角的 Generate token 创建，然后复制生成的 token 序列粘贴到 Sync Setting 配置界面图中的第一个输入框中。 第二步：创建 gist 还是点击我们的头像，选择 Your gists 后在输入框中随便输入点信息，然后点击 Create secret gist 创建一个gist。 gist创建成功后，我们复制生成的 gistID 将其粘贴到Sync Setting 配置界面图中的第二个输入框中。 以上就是我们的 Sync Setting 所有的配置操作了，那我们该如何备份呢？ 注：最好将两个数据备份一下，以便以后恢复用到。若没有备份需要恢复，可以看文章最下方的教程 备份打开我们 Atom 的文档编辑页面（Crtl + Shift + P），在其中输入”Syn”选中第二个 Backup 选项就可以开始备份了。 ../imgs/img_01/img07.png当 Atom 编辑器右上角出现绿色的备份成功的提示消息，就意味着我们的备份成功啦。 恢复(备份)在新的 Atom 编辑器中下载 Sync Setting 插件，在其配置界面中将我们备份的两个数据分别填入两个输入框中，打开我们 Atom 的文档编辑页面（Crtl + Shift + P），在其中输入”Syn”选中第三个 Restore 选项就可以恢复了。 恢复(未备份)我们缺的就是两个数据就可以完成ifu操作了，所以我们只需要想方法获取到这两个数据就可以了。 personal access token打开我们的 GitHub 找到我们之前创建的 personal access token(在Settings中,前面写的很详细)，然后会看到有个红色字体的按钮，它的意思是重新生成令牌，我们就可以重新生成一个令牌。 GistID打开我们的 GitHub 还是选择 Your gists 到达我们的 gist 的界面，然后选择我们的右上角的 See all of your gists ，找到我们之前创建的 gist。 然后我们点击 init.coffee，就到达了我们备份 Atom 插件信息的一个库. 之后我们以发现我们所需要的 gistID 就在我们的网址结尾处，直接将他复制过去即可。 现在我们所需要的两个数据全都有了，就可以开始我们的恢复操作了，不过在此还是推荐各位朋友记得备份一下，免得花这么多时间去找。 欢迎大家收藏我的博客，我会努力更新更多的作品的，给自己加个油！]]></content>
       <categories>
-        <category>教程</category>
+        <category>-教程 -Atom -Sync Setting备份插件</category>
       </categories>
       <tags>
         <tag>Atom</tag>
+        <tag>插件</tag>
+        <tag>教程</tag>
+        <tag>Sync Setting</tag>
+        <tag>备份</tag>
       </tags>
   </entry>
   <entry>
