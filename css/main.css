@@ -2026,7 +2026,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff57fa;
+  background: #ffe334;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2905,24 +2905,6 @@ embed {
 }
 img.img-topic {
   width: 100%;
-}
-.post-sticky-flag {
-  font-size: inherit;
-  float: left;
-  color: #000;
-  cursor: help;
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out;
-  transition-delay: 0s;
-}
-.post-sticky-flag:hover {
-  color: #07b39b;
-}
-pre .addition {
-  background: #e6ffed;
-}
-pre .deletion {
-  background: #ffeef0;
 }
 .site-author-image {
   border: 2px solid #fff;
