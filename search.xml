@@ -10,11 +10,11 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>2016届</tag>
         <tag>蓝桥杯</tag>
         <tag>Java</tag>
         <tag>C组</tag>
         <tag>省赛</tag>
+        <tag>2016届</tag>
       </tags>
   </entry>
   <entry>
@@ -27,11 +27,11 @@
         <category>java</category>
       </categories>
       <tags>
+        <tag>2015届</tag>
         <tag>蓝桥杯</tag>
         <tag>Java</tag>
         <tag>C组</tag>
         <tag>省赛</tag>
-        <tag>2015届</tag>
       </tags>
   </entry>
   <entry>
@@ -75,9 +75,9 @@
         <category>Sync Setting 备份插件</category>
       </categories>
       <tags>
+        <tag>教程</tag>
         <tag>Atom</tag>
         <tag>插件</tag>
-        <tag>教程</tag>
         <tag>Sync Setting</tag>
         <tag>备份</tag>
       </tags>
@@ -91,9 +91,9 @@
         <category>Markdown语法</category>
       </categories>
       <tags>
-        <tag>教程</tag>
         <tag>Markdown</tag>
         <tag>语法</tag>
+        <tag>教程</tag>
       </tags>
   </entry>
 </search>

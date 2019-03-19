@@ -38,8 +38,6 @@
       <category term="java" scheme="https://noahcodemonkey.top/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E7%9C%81%E8%B5%9B/java/"/>
     
     
-      <category term="2016届" scheme="https://noahcodemonkey.top/tags/2016%E5%B1%8A/"/>
-    
       <category term="蓝桥杯" scheme="https://noahcodemonkey.top/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/"/>
     
       <category term="Java" scheme="https://noahcodemonkey.top/tags/Java/"/>
@@ -47,6 +45,8 @@
       <category term="C组" scheme="https://noahcodemonkey.top/tags/C%E7%BB%84/"/>
     
       <category term="省赛" scheme="https://noahcodemonkey.top/tags/%E7%9C%81%E8%B5%9B/"/>
+    
+      <category term="2016届" scheme="https://noahcodemonkey.top/tags/2016%E5%B1%8A/"/>
     
   </entry>
   
@@ -72,6 +72,8 @@
       <category term="java" scheme="https://noahcodemonkey.top/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E7%9C%81%E8%B5%9B/java/"/>
     
     
+      <category term="2015届" scheme="https://noahcodemonkey.top/tags/2015%E5%B1%8A/"/>
+    
       <category term="蓝桥杯" scheme="https://noahcodemonkey.top/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/"/>
     
       <category term="Java" scheme="https://noahcodemonkey.top/tags/Java/"/>
@@ -79,8 +81,6 @@
       <category term="C组" scheme="https://noahcodemonkey.top/tags/C%E7%BB%84/"/>
     
       <category term="省赛" scheme="https://noahcodemonkey.top/tags/%E7%9C%81%E8%B5%9B/"/>
-    
-      <category term="2015届" scheme="https://noahcodemonkey.top/tags/2015%E5%B1%8A/"/>
     
   </entry>
   
@@ -168,11 +168,11 @@
       <category term="Sync Setting 备份插件" scheme="https://noahcodemonkey.top/categories/%E6%95%99%E7%A8%8B/Atom/Sync-Setting-%E5%A4%87%E4%BB%BD%E6%8F%92%E4%BB%B6/"/>
     
     
+      <category term="教程" scheme="https://noahcodemonkey.top/tags/%E6%95%99%E7%A8%8B/"/>
+    
       <category term="Atom" scheme="https://noahcodemonkey.top/tags/Atom/"/>
     
       <category term="插件" scheme="https://noahcodemonkey.top/tags/%E6%8F%92%E4%BB%B6/"/>
-    
-      <category term="教程" scheme="https://noahcodemonkey.top/tags/%E6%95%99%E7%A8%8B/"/>
     
       <category term="Sync Setting" scheme="https://noahcodemonkey.top/tags/Sync-Setting/"/>
     
@@ -200,11 +200,11 @@
       <category term="Markdown语法" scheme="https://noahcodemonkey.top/categories/%E6%95%99%E7%A8%8B/Markdown%E8%AF%AD%E6%B3%95/"/>
     
     
-      <category term="教程" scheme="https://noahcodemonkey.top/tags/%E6%95%99%E7%A8%8B/"/>
-    
       <category term="Markdown" scheme="https://noahcodemonkey.top/tags/Markdown/"/>
     
       <category term="语法" scheme="https://noahcodemonkey.top/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="教程" scheme="https://noahcodemonkey.top/tags/%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
