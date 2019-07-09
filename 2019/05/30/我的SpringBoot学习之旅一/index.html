@@ -285,6 +285,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-top">
+          <a href="/top/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-signal"></i> <br>
+            
+            热点
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -531,12 +541,12 @@
 <h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><ol>
 <li>Java</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">λ java -version</span><br><span class="line">java version &quot;11.0.3&quot; 2019-04-16 LTS</span><br><span class="line">Java(TM) SE Runtime Environment 18.9 (build 11.0.3+12-LTS)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.3+12-LTS, mixed mode)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">λ java -version</span><br><span class="line">java version "11.0.3" 2019-04-16 LTS</span><br><span class="line">Java(TM) SE Runtime Environment 18.9 (build 11.0.3+12-LTS)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.3+12-LTS, mixed mode)</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="2">
 <li>Maven</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">λ mvn -v</span><br><span class="line">Apache Maven 3.6.1 (d66c9c0b3152b2e69ee9bac180bb8fcc8e6af555; 2019-04-05T03:00:29+08:00)</span><br><span class="line">Maven home: F:\JavaSpace\WorkSpaces\Maven\apache-maven-3.6.1</span><br><span class="line">Java version: 11.0.3, vendor: Oracle Corporation, runtime: F:\JavaSpace\JDK\jdk11</span><br><span class="line">Default locale: zh_CN, platform encoding: GBK</span><br><span class="line">OS name: &quot;windows 10&quot;, version: &quot;10.0&quot;, arch: &quot;amd64&quot;, family: &quot;windows&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">λ mvn -v</span><br><span class="line">Apache Maven 3.6.1 (d66c9c0b3152b2e69ee9bac180bb8fcc8e6af555; 2019-04-05T03:00:29+08:00)</span><br><span class="line">Maven home: F:\JavaSpace\WorkSpaces\Maven\apache-maven-3.6.1</span><br><span class="line">Java version: 11.0.3, vendor: Oracle Corporation, runtime: F:\JavaSpace\JDK\jdk11</span><br><span class="line">Default locale: zh_CN, platform encoding: GBK</span><br><span class="line">OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"</span><br></pre></td></tr></tbody></table></figure>
 
 <p><strong>注：需要确保系统已安装了Java和Maven的有效版本</strong></p>
 <h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p>其中我总结了三种创建项目的方法，分别位自己创建，Spring Boot官网创建还有编辑器创建三种，下面分别介绍这三种方法如何去创建。</p>
@@ -555,7 +565,7 @@
 <p><img src="https://noahcodemonkey.top/images/img/%E6%88%91%E7%9A%84SpringBoot%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85%E4%B8%80/img05.png" alt="诶呀,图片加载出了点问题!"></p>
 <h3 id="编写代码"><a href="#编写代码" class="headerlink" title="编写代码"></a>编写代码</h3><p>代码的编辑在 src/main/java/com.noahcode.demo/DemoApplication 文件编辑(此处以我的路径举例)</p>
 <p><img src="https://noahcodemonkey.top/images/img/%E6%88%91%E7%9A%84SpringBoot%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85%E4%B8%80/img06.png" alt="诶呀,图片加载出了点问题"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.noahcode.demo;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line">        <span class="keyword">import</span> org.springframework.boot.autoconfigure.EnableAutoConfiguration;</span><br><span class="line">        <span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">        <span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@EnableAutoConfiguration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/"</span>)</span><br><span class="line">    <span class="function">String <span class="title">home</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span>  <span class="string">"Hello World!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        SpringApplication.run(DemoApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.noahcode.demo;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line">        <span class="keyword">import</span> org.springframework.boot.autoconfigure.EnableAutoConfiguration;</span><br><span class="line">        <span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">        <span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@EnableAutoConfiguration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoApplication</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/"</span>)</span><br><span class="line">    <span class="function">String <span class="title">home</span><span class="params">()</span></span>{</span><br><span class="line">        <span class="keyword">return</span>  <span class="string">"Hello World!"</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line"></span><br><span class="line">        SpringApplication.run(DemoApplication.class, args);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h3><h4 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h4><p>对注解一点都不懂的我说实话一开始见到这个有点蒙，总感觉它像注释，对程序运行啥的应该不影响，之后去翻阅资料，才知道它的重要性，以下内容基本摘抄于原博客，并不是很理解的透彻，云里雾里的，以后多多使用来感受它的作用。</p>
 <ol>
@@ -568,21 +578,21 @@
 <li><p>@SpringBootConfiguration</p>
 <p>它继承自 @Configuration,标注当前类是配置类，会把当前类内声明的一个或多个以@Bean注解标记的方法的实例纳入到 Spring 的容器中，并且实例名就是方法名。</p>
 <p>源码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> SpringBootConfiguration &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>({ElementType.TYPE})</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> SpringBootConfiguration {</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>@ComponentScan</p>
 <p>这个注解在 Spring 的注解中起到很重要的作用，他可以自定义 Spring扫描的包，默认回扫描标有@Controller、@Service、@Component以及@Repository注解的类，并且实例化到 SpringIOC 的容器中，其中它的源码中有个配置属性：basePackages，用来指定扫描的包，如果不知道，他会扫描配置了该注解的类的包所在的路径</p>
 <p>源码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AliasFor</span>(</span><br><span class="line"> annotation = ComponentScan.class,</span><br><span class="line"> attribute = <span class="string">"basePackages"</span></span><br><span class="line"> )</span><br><span class="line"> String[] scanBasePackages() <span class="keyword">default</span> &#123;&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AliasFor</span>(</span><br><span class="line"> annotation = ComponentScan.class,</span><br><span class="line"> attribute = <span class="string">"basePackages"</span></span><br><span class="line"> )</span><br><span class="line"> String[] scanBasePackages() <span class="keyword">default</span> {};</span><br></pre></td></tr></tbody></table></figure>
 
 <p> 在Spring Boot 中我们也可以将 scanBasePackages 属行指定包扫描的路径(若不指定默认扫描主程序类所在的包路径以及子包下的类)</p>
 <p> e.g.</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span>(scanBasePackages = <span class="string">"com.seagetech.springbootdemo"</span>)</span><br></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span>(scanBasePackages = <span class="string">"com.seagetech.springbootdemo"</span>)</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>@EnableAutoConfiguration</p>
 <p>这个注解是 Spring Boot 完成自动配置的关键，此注解完成的是将所有符合自动配置条件的 bean 的定义加载到 Spring 的容器中。</p>
 <p>源码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@AutoConfigurationPackage</span></span><br><span class="line"><span class="meta">@Import</span>(&#123;AutoConfigurationImportSelector.class&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> EnableAutoConfiguration &#123;</span><br><span class="line">    String ENABLED_OVERRIDE_PROPERTY = <span class="string">"spring.boot.enableautoconfiguration"</span>;</span><br><span class="line"></span><br><span class="line">    Class&lt;?&gt;[] exclude() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    String[] excludeName() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>({ElementType.TYPE})</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@AutoConfigurationPackage</span></span><br><span class="line"><span class="meta">@Import</span>({AutoConfigurationImportSelector.class})</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> EnableAutoConfiguration {</span><br><span class="line">    String ENABLED_OVERRIDE_PROPERTY = <span class="string">"spring.boot.enableautoconfiguration"</span>;</span><br><span class="line"></span><br><span class="line">    Class<?>[] exclude() <span class="keyword">default</span> {};</span><br><span class="line"></span><br><span class="line">    String[] excludeName() <span class="keyword">default</span> {};</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>可以看到它的源码又引用了很多注解，下面我们依次来分析它们。</p>
 </li>
@@ -597,7 +607,25 @@
 </ol>
 <h4 id="home-方法"><a href="#home-方法" class="headerlink" title="home 方法"></a>home 方法</h4><p>添加了 @RequestMapping 注释告诉 Spring ，任何带有 / 路径的 HTTP 请求都应该映射到 home 方法，最后告诉 Spring 将结果字符串直接呈现给调用者。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>没有一点基础说实话有点难理解，到现在都半知半解的，像注解啊什么的感觉还需要多练习之后才能懂得它的作用。</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
     <div>
@@ -802,7 +830,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

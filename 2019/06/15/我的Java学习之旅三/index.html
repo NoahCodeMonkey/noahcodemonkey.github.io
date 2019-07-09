@@ -280,6 +280,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-top">
+          <a href="/top/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-signal"></i> <br>
+            
+            热点
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -475,7 +485,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.8k
+                  1.9k
                 </span>
               
 
@@ -580,7 +590,7 @@
 <li>只要让一个线程在执行线程任务时囧昂多条操作共享数据的代码执行完，在执行过程中不要让其他线程参与运算</li>
 <li>Java中解决此问题的通过代码块来完成的</li>
 <li>代码块又称同步代码块 synchronized</li>
-<li>格式：  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(对象)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//需要被同步的代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>格式：  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(对象)</span><br><span class="line">{</span><br><span class="line">    <span class="comment">//需要被同步的代码</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
 </li>
@@ -615,7 +625,7 @@
 <li><p>单例懒汉式的并发访问 <strong>(饿汉式与懒汉式在文章下方有介绍)</strong></p>
 <ul>
 <li>饿汉式并发没有安全问题</li>
-<li>懒汉式并发会有安全隐患，所以加入同步机制解决安全问题，但是同步的出现降低了效率，可以通过双重判断的方式，解决效率问题减少判断锁的次数  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Singleton;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> LazySingleton intance = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(intance == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">synchronized</span>(LazySingleton.class)&#123;</span><br><span class="line">            <span class="keyword">if</span>(intance == <span class="keyword">null</span>)&#123;</span><br><span class="line">                intance = <span class="keyword">new</span> LazySingleton();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> intance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>懒汉式并发会有安全隐患，所以加入同步机制解决安全问题，但是同步的出现降低了效率，可以通过双重判断的方式，解决效率问题减少判断锁的次数  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Singleton;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span> </span>{</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> LazySingleton intance = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span></span>{</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span></span>{</span><br><span class="line">      <span class="keyword">if</span>(intance == <span class="keyword">null</span>){</span><br><span class="line">        <span class="keyword">synchronized</span>(LazySingleton.class){</span><br><span class="line">            <span class="keyword">if</span>(intance == <span class="keyword">null</span>){</span><br><span class="line">                intance = <span class="keyword">new</span> LazySingleton();</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> intance;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
 </li>
@@ -646,16 +656,34 @@
 <li><p>实现方式</p>
 <ol>
 <li><p>懒汉模式</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Singleton;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span> </span>&#123;</span><br><span class="line"><span class="comment">//懒汉式单例模式</span></span><br><span class="line"><span class="comment">//比较懒，在类加载时，不创建实例，因此类加载速度快，但运行时获取对象的速度慢</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> LazySingleton intance = <span class="keyword">null</span>;<span class="comment">//静态私用成员，没有初始化    </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//私有构造函数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;    <span class="comment">//静态，同步，公开访问点</span></span><br><span class="line">      <span class="keyword">if</span>(intance == <span class="keyword">null</span>)&#123;</span><br><span class="line">        intance = <span class="keyword">new</span> LazySingleton();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> intance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Singleton;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span> </span>{</span><br><span class="line"><span class="comment">//懒汉式单例模式</span></span><br><span class="line"><span class="comment">//比较懒，在类加载时，不创建实例，因此类加载速度快，但运行时获取对象的速度慢</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> LazySingleton intance = <span class="keyword">null</span>;<span class="comment">//静态私用成员，没有初始化    </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span></span>{</span><br><span class="line"><span class="comment">//私有构造函数</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span></span>{    <span class="comment">//静态，同步，公开访问点</span></span><br><span class="line">      <span class="keyword">if</span>(intance == <span class="keyword">null</span>){</span><br><span class="line">        intance = <span class="keyword">new</span> LazySingleton();</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> intance;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>饿汉模式</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Singleton;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EagerSingleton</span> </span>&#123;</span><br><span class="line"><span class="comment">//饿汉单例模式</span></span><br><span class="line"><span class="comment">//在类加载时就完成了初始化，所以类加载较慢，但获取对象的速度快</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> EagerSingleton instance = <span class="keyword">new</span> EagerSingleton();<span class="comment">//静态私有成员，已初始化</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">EagerSingleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//私有构造函数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> EagerSingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;    <span class="comment">//静态，不用同步（类加载时已初始化，不会有多线程的问题）</span></span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Singleton;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EagerSingleton</span> </span>{</span><br><span class="line"><span class="comment">//饿汉单例模式</span></span><br><span class="line"><span class="comment">//在类加载时就完成了初始化，所以类加载较慢，但获取对象的速度快</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> EagerSingleton instance = <span class="keyword">new</span> EagerSingleton();<span class="comment">//静态私有成员，已初始化</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">EagerSingleton</span><span class="params">()</span> </span>{</span><br><span class="line"><span class="comment">//私有构造函数</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> EagerSingleton <span class="title">getInstance</span><span class="params">()</span></span>{    <span class="comment">//静态，不用同步（类加载时已初始化，不会有多线程的问题）</span></span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">}</span><br><span class="line">   </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ol>
 </li>
 </ol>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
     <div>
@@ -757,6 +785,10 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/07/10/Java基础面试题与答案/" rel="prev" title="Java基础面试题与答案">
+                <i class="fa fa-chevron-left"></i> Java基础面试题与答案
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
@@ -852,7 +884,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

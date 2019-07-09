@@ -292,6 +292,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-top">
+          <a href="/top/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-signal"></i> <br>
+            
+            热点
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -487,7 +497,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  921
+                  973
                 </span>
               
 
@@ -555,7 +565,25 @@
 <p><img src="https://noahcodemonkey.top/images/img/Atom%E6%8F%92%E4%BB%B6%E5%A4%87%E4%BB%BD/13.png" alt="诶呀，图片加载出了点问题！"></p>
 <p>现在我们所需要的两个数据全都有了，就可以开始我们的恢复操作了，不过在此还是推荐各位朋友记得备份一下，免得花这么多时间去找。</p>
 <p><strong>欢迎大家收藏我的博客，我会努力更新更多的作品的，给自己加个油！</strong></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
     <div>
@@ -760,7 +788,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
