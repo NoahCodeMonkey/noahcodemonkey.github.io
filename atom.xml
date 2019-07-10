@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://noahcodemonkey.top/"/>
-  <updated>2019-07-09T22:11:51.433Z</updated>
+  <updated>2019-06-15T07:53:31.694Z</updated>
   <id>https://noahcodemonkey.top/</id>
   
   <author>
@@ -15,56 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Java基础面试题与答案</title>
-    <link href="https://noahcodemonkey.top/2019/07/10/Java%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%8E%E7%AD%94%E6%A1%88/"/>
-    <id>https://noahcodemonkey.top/2019/07/10/Java基础面试题与答案/</id>
-    <published>2019-07-09T22:11:51.000Z</published>
-    <updated>2019-07-09T22:11:51.433Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><img src="" alt="" style="width:100%"><p class="description"></p><a id="more"></a><p>##</p><p>##</p><p>##</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;img src=&quot;&quot; alt=&quot;&quot; style=&quot;width:100%&quot;&gt;
-
-&lt;p class=&quot;description&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>我的Java学习之旅三</title>
-    <link href="https://noahcodemonkey.top/2019/06/15/%E6%88%91%E7%9A%84Java%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85%E4%B8%89/"/>
-    <id>https://noahcodemonkey.top/2019/06/15/我的Java学习之旅三/</id>
-    <published>2019-06-15T07:46:59.000Z</published>
-    <updated>2019-06-18T22:05:04.665Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><img src="https://noahcodemonkey.top/images/img/我的Java学习之旅三/header.jpg" alt="" style="width:100%"><p class="description">之前在慕课网看的视频看到第三季就没了，才讲到了集合框架，后面还有好多内容没有讲，然后问一个同学要了一份他学习Java当时看的视频资料，开始接着学习完后面的知识看，下面是一项重要的知识点---多线程</p><a id="more"></a><h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ol><li>进程<ul><li>正在执行中的程序，其实为应用程序在内存中运行的那片空间</li></ul></li><li>线程<ul><li>进程中的一个执行单元，负责进程中的程序的运行</li><li>一个线程中是可以有多个线程的，这个应用程序可以称之为多线程程序</li></ul></li><li>并发<ul><li>可以实现多部分程序同时执行的专业术语称之为并发</li></ul></li><li>多线程的使用可以合理使用CPU的资源，如果线程过多会导致降低性能</li><li>CPU处理程序时是通过快熟切换完成的，在我们看来好像随机一样</li><li>如何创建线程(一)<ul><li>定义一个类继承Thread</li><li>重写run()方法</li><li>创建子类对象，就是创建线程对象</li><li>调用start()方法，开启线程并让线程执行，同时告诉jvm取调用run()方法</li></ul></li></ol><p><strong>(面试问题：线程对象调用run()方法和调用start()方法区别？)</strong></p><ol start="7"><li>多线程执行时，在栈内存中，其实每一个执行线程都有一片自己所属的栈内存空间，进行方法的压栈和弹栈</li><li>当运行线程的任务结束了，线程自动在栈内存中释放了，但是当所有的执行线程都结束了，进程也就结束了</li><li>获取线程名称：<ul><li>Thread.currentThread()获取当前线程对象</li><li>Thread.currentThread().getName()获取当前线程对象的名称</li></ul></li><li>创建线程(二)<ul><li>定义类实现Runnable接口：避免了继承Thread类的单继承局限性</li><li>覆盖接口中的run()方法，将线程任务代码定义到run()方法中</li><li>创建Thread类的对象：只有创建Thread类的对象才可以创建线程</li><li>将Runnable接口的子类对象作为参数传递给Thread类的构造函数<ul><li>因为线程已被封装到Runnable接口的run()方法中，而这个run()方法所属于Runnable接口的子类对象，所以将这个子类对象作为参数传递给Thread的构造函数，这样线程对象创建时就可以明确要运行的线程的任务</li></ul></li><li>调用Thread类的start()方法开启线程</li></ul></li></ol><p><strong>为什么是接口？因为当一个类他已经继承于一个父类后，还需要开启线程将类中的一部分代码被多线程执行，若我们继续使用继承Thread就会出现多继承的情况，这是不允许的</strong></p><ol start="11"><li><p>实现Runnable接口的好处</p><ul><li>实现Runnable接口避免了单继承的局限性，所以较为常用</li><li>实现Runnable接口的方式，更加符合面向对象，现成分为了两部分，一部分线程对象，一部分线程任务</li><li>继承Thread类：线程对象和线程任务耦合在一起，一旦创建Thread类的子类对象，既有线程对象，又有线程任务</li><li>实现Runnable接口：将线程任务单独分离出来封装成对象，类型就是Runnable接口类型。Runnable接口对线程对象和线程任务进行解耦</li></ul></li><li><p>线程任务中通常都有循环结构</p></li><li><p>线程的状态<br><img src="https://noahcodemonkey.top/images/img/%E6%88%91%E7%9A%84Java%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85%E4%B8%89/img01.jpg" alt="诶呀，图片加载出了点问题！"></p></li><li><p>线程安全问题的产生</p><ol><li>线程任务中在操作共享的数据</li><li>线程任务操作共享数据的代码有多条(运算有多个)</li></ol></li><li><p>线程安全问题的解决</p><ul><li>只要让一个线程在执行线程任务时囧昂多条操作共享数据的代码执行完，在执行过程中不要让其他线程参与运算</li><li>Java中解决此问题的通过代码块来完成的</li><li>代码块又称同步代码块 synchronized</li><li>格式：  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(对象)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//需要被同步的代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul></li><li><p>同步代码块的好处与弊端</p><ul><li>好处：解决了多线程安全问题</li><li>弊端：降低了程序的性能</li><li>为了程序的安全损失一点弊端这是值得的</li></ul></li><li><p>同步的前提</p><ul><li>必须保证多个线程在同步总使用的是同一个锁</li><li>解决了当多线程安全问题发生时，加入了同步后问题依旧，就要通过这个同步的前提来判断同步是否写正确</li></ul></li><li><p>同步的另一种体现形式：</p><ul><li>同步函数</li><li>格式：public synchronized void asle(){}</li><li>同步函数使用的锁时this</li></ul></li><li><p>同步函数于同步代码块有什么区别？</p><ul><li>同步函数使用的锁是固定的this</li><li>同步代码块使用的锁可以是任意对象</li></ul></li><li><p>static同步函数，使用的锁不是this，而是字节码文件对象(类名.class)</p></li><li><p>单例懒汉式的并发访问 <strong>(饿汉式与懒汉式在文章下方有介绍)</strong></p><ul><li>饿汉式并发没有安全问题</li><li>懒汉式并发会有安全隐患，所以加入同步机制解决安全问题，但是同步的出现降低了效率，可以通过双重判断的方式，解决效率问题减少判断锁的次数  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Singleton;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> LazySingleton intance = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(intance == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">synchronized</span>(LazySingleton.class)&#123;</span><br><span class="line">            <span class="keyword">if</span>(intance == <span class="keyword">null</span>)&#123;</span><br><span class="line">                intance = <span class="keyword">new</span> LazySingleton();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> intance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul></li><li><p>同步的另一个弊端<br>情况一：当线程任务中出现了多个同步(多个锁)时，如果同步中嵌套了其他的同步，这时候容易引发一种现象：死锁</p></li><li><p>多线程中最为常见的应用案例：</p><ul><li>生产者消费者问题</li><li>生产和消费同时执行，需要多线程</li><li>但是执行的任务却不相同，处理的资源却是相同的：线程的通信<h2 id="单例模式-懒汉方式和饿汉方式"><a href="#单例模式-懒汉方式和饿汉方式" class="headerlink" title="单例模式(懒汉方式和饿汉方式)"></a>单例模式(懒汉方式和饿汉方式)</h2></li></ul></li></ol><p>参考资料：<a href="https://www.cnblogs.com/WANGXINCHUAN/p/5628308.html" target="_blank" rel="noopener">BK.Mr’s</a></p><ol><li><p>单例模式的概念</p><ul><li>单例模式的意思就是只有一个实例。单例模式确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。这个类称为单例类</li></ul></li><li><p>关键点</p><ol><li>一个类只有一个实例(前提)</li><li>他必须自行创建这个实例</li><li>他必须自行向整个系统提供这个实例</li></ol></li><li><p>实现方式</p><ol><li><p>懒汉模式</p> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Singleton;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span> </span>&#123;</span><br><span class="line"><span class="comment">//懒汉式单例模式</span></span><br><span class="line"><span class="comment">//比较懒，在类加载时，不创建实例，因此类加载速度快，但运行时获取对象的速度慢</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> LazySingleton intance = <span class="keyword">null</span>;<span class="comment">//静态私用成员，没有初始化    </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//私有构造函数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;    <span class="comment">//静态，同步，公开访问点</span></span><br><span class="line">      <span class="keyword">if</span>(intance == <span class="keyword">null</span>)&#123;</span><br><span class="line">        intance = <span class="keyword">new</span> LazySingleton();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> intance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>饿汉模式</p> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Singleton;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EagerSingleton</span> </span>&#123;</span><br><span class="line"><span class="comment">//饿汉单例模式</span></span><br><span class="line"><span class="comment">//在类加载时就完成了初始化，所以类加载较慢，但获取对象的速度快</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> EagerSingleton instance = <span class="keyword">new</span> EagerSingleton();<span class="comment">//静态私有成员，已初始化</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">EagerSingleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//私有构造函数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> EagerSingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;    <span class="comment">//静态，不用同步（类加载时已初始化，不会有多线程的问题）</span></span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ol></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      我的 Java 学习之旅三--多线程
-    
-    </summary>
-    
-      <category term="Java" scheme="https://noahcodemonkey.top/categories/Java/"/>
-    
-      <category term="入门" scheme="https://noahcodemonkey.top/categories/Java/%E5%85%A5%E9%97%A8/"/>
-    
-      <category term="教程" scheme="https://noahcodemonkey.top/categories/Java/%E5%85%A5%E9%97%A8/%E6%95%99%E7%A8%8B/"/>
-    
-    
-      <category term="教程" scheme="https://noahcodemonkey.top/tags/%E6%95%99%E7%A8%8B/"/>
-    
-      <category term="Java" scheme="https://noahcodemonkey.top/tags/Java/"/>
-    
-      <category term="入门" scheme="https://noahcodemonkey.top/tags/%E5%85%A5%E9%97%A8/"/>
-    
-  </entry>
   
   <entry>
     <title>我的Java学习之旅二</title>
@@ -123,26 +73,6 @@
       <category term="Java" scheme="https://noahcodemonkey.top/tags/Java/"/>
     
       <category term="入门" scheme="https://noahcodemonkey.top/tags/%E5%85%A5%E9%97%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我的Spring学习之旅三(未完待补)</title>
-    <link href="https://noahcodemonkey.top/2019/06/11/%E6%88%91%E7%9A%84Spring%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85%E4%B8%89/"/>
-    <id>https://noahcodemonkey.top/2019/06/11/我的Spring学习之旅三/</id>
-    <published>2019-06-11T14:30:49.000Z</published>
-    <updated>2019-06-13T09:58:43.751Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><img src="https://noahcodemonkey.top/images/img/我的Spring学习之旅三/header.png" alt="" style="width:100%"><p class="description"></p><a id="more"></a><h2 id="知识点预告"><a href="#知识点预告" class="headerlink" title="知识点预告"></a>知识点预告</h2><ol><li>完善我们的account案例</li><li>分析案例中问题</li><li>回顾之前讲过的一个技术：动态代理</li><li>动态代理另一种实现方式</li><li>解决案例中的问题</li><li>AOP的概念</li><li>Spring中的AOP相关术语</li><li>Spring中基于XML和注解的AOP配置</li></ol><p>##</p><p>##</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;img src=&quot;https://noahcodemonkey.top/images/img/我的Spring学习之旅三/header.png&quot; alt=&quot;&quot; style=&quot;width:100%&quot;&gt;
-
-&lt;p class=&quot;description&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
     
   </entry>
   
@@ -215,42 +145,6 @@
       <category term="入门" scheme="https://noahcodemonkey.top/tags/%E5%85%A5%E9%97%A8/"/>
     
       <category term="Spring" scheme="https://noahcodemonkey.top/tags/Spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我的SpringBoot学习之旅三(暂不完整)</title>
-    <link href="https://noahcodemonkey.top/2019/06/02/%E6%88%91%E7%9A%84SpringBoot%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85%E4%B8%89/"/>
-    <id>https://noahcodemonkey.top/2019/06/02/我的SpringBoot学习之旅三/</id>
-    <published>2019-06-02T09:21:40.000Z</published>
-    <updated>2019-06-03T11:50:13.268Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><img src="https://noahcodemonkey.top/images/img/我的SpringBoot学习之旅三/header.jpg" alt="" style="width:100%"><p class="description">开始了我的第三篇 Spring Boot 的学习，这次的内容是关于 Spring Boot 与多数据源的配置。</p><a id="more"></a><h2 id="配置多数据源的注意事项"><a href="#配置多数据源的注意事项" class="headerlink" title="配置多数据源的注意事项"></a>配置多数据源的注意事项</h2><ol><li><p>不同数据源的配置要分开</p></li><li><p>关注每次使用的数据源</p><ul><li>有多个 DataSource 时系统如何判断</li><li>对应的设施(事务、ORM 等)如何选择 DataSource</li></ul></li></ol><h2 id="Spring-Boot-中的多数据源配置"><a href="#Spring-Boot-中的多数据源配置" class="headerlink" title="Spring Boot 中的多数据源配置"></a>Spring Boot 中的多数据源配置</h2><ol><li><p>手工配置两组 DataSource 及相关内容</p></li><li><p>与 Spring Boot 协同工作(二选一)</p><ol><li><p>配置 @Primary 类型的 Bean</p></li><li><p>排除 Spring Boot 的自动配置</p><ul><li>DataSourceAutoConfiguration</li><li>DataSourceTransactionManagerAutoConfiguration</li><li>JdbcTemplateAutoConfiguration</li></ul></li></ol></li></ol><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>在我们的/src/main/java/xxx/xxx.java中编辑我们的代码</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.noahcode.test.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.datasource.DataSourceTransactionManager;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.PlatformTransactionManager;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.annotation.Resource;</span><br><span class="line"><span class="keyword">import</span> javax.sql.DataSource;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span>(exclude = &#123;DataSourceAutoConfiguration.class,DataSourceTransactionManagerAutoConfiguration.class, JdbcTemplateAutoConfiguration.class&#125;)</span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(DemoApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@ConfigurationProperties</span>(<span class="string">"foo.datasource"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> DataSourceProperties <span class="title">fooDataSourceProperties</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DataSourceProperties();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DataSource <span class="title">fooDataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        DataSourceProperties dataSourceProperties = fooDataSourceProperties();</span><br><span class="line">        log.info(<span class="string">"foo datasource: &#123;&#125;"</span>, dataSourceProperties.getUrl());</span><br><span class="line">        <span class="keyword">return</span> dataSourceProperties.initializeDataSourceBuilder().build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> PlatformTransactionManager <span class="title">fooTxManager</span><span class="params">(DataSource fooDataSource)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DataSourceTransactionManager(fooDataSource);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@ConfigurationProperties</span>(<span class="string">"bar.datasource"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> DataSourceProperties <span class="title">barDataSourceProperties</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DataSourceProperties();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DataSource <span class="title">barDataSource</span><span class="params">()</span></span>&#123;</span><br><span class="line">        DataSourceProperties dataSourceProperties=barDataSourceProperties();</span><br><span class="line">        log.info(<span class="string">"bar datasource: &#123;&#125;"</span>,dataSourceProperties.getUrl());</span><br><span class="line">        <span class="keyword">return</span>  dataSourceProperties.initializeDataSourceBuilder().build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> PlatformTransactionManager <span class="title">barTxManager</span><span class="params">(DataSource barDataSource)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DataSourceTransactionManager(barDataSource);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>编辑/src/main/resources/application.properties文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">management.endpoints.web.exposure.include=*</span><br><span class="line">spring.output.ansi.enabled=always</span><br><span class="line"></span><br><span class="line">foo.datasource.url=jdbc:h2:mem:foo</span><br><span class="line">foo.datasource.username=sa</span><br><span class="line">foo.datasource.password=</span><br><span class="line"></span><br><span class="line">bar.datasource.url=jdbc:h2:mem:bar</span><br><span class="line">bar.datasource.username=sa</span><br><span class="line">bar.datasource.password=</span><br></pre></td></tr></table></figure><h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><p>一些重复的之前的文章写到过的就自动略过了，如果有不清楚的可以回过头去看之前的文章或者百度啦。</p><ol><li><p>@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class,DataSourceTransactionManagerAutoConfiguration.class,JdbcTemplateAutoConfiguration.class})</p><p>从之前的两篇文章了解来这还是第一次知道 @SpringBootApplication 后面居然还可以加东西的，这个地方从百度了解意思为将我们定义的这些配置排除在外，不让 Spring Boot 为我们自动配置它们。</p></li><li><p>@Bean</p><p>虽然是一个新的注解，但是在学习 Spring Boot 之前其实就了解到 Spring 的 Bean 对象了，这个注解就是创建一个 Bean 对象。</p></li></ol><hr><p><strong>咔 这章就到此处停止了 对 感觉有点难理解了，所以后续学完再来补充此篇文章了，换了一个新手教程学习一下，但还是 Spring Boot 哦</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      我的 Spring Boot 学习之旅(三)--Spring Boot 与多数据源配置
-    
-    </summary>
-    
-      <category term="Java" scheme="https://noahcodemonkey.top/categories/Java/"/>
-    
-      <category term="Spring 全家桶" scheme="https://noahcodemonkey.top/categories/Java/Spring-%E5%85%A8%E5%AE%B6%E6%A1%B6/"/>
-    
-      <category term="Spring Boot" scheme="https://noahcodemonkey.top/categories/Java/Spring-%E5%85%A8%E5%AE%B6%E6%A1%B6/Spring-Boot/"/>
-    
-      <category term="教程" scheme="https://noahcodemonkey.top/categories/Java/Spring-%E5%85%A8%E5%AE%B6%E6%A1%B6/Spring-Boot/%E6%95%99%E7%A8%8B/"/>
-    
-    
-      <category term="教程" scheme="https://noahcodemonkey.top/tags/%E6%95%99%E7%A8%8B/"/>
-    
-      <category term="Java" scheme="https://noahcodemonkey.top/tags/Java/"/>
-    
-      <category term="Spring 全家桶" scheme="https://noahcodemonkey.top/tags/Spring-%E5%85%A8%E5%AE%B6%E6%A1%B6/"/>
-    
-      <category term="Spring Boot" scheme="https://noahcodemonkey.top/tags/Spring-Boot/"/>
-    
-      <category term="入门" scheme="https://noahcodemonkey.top/tags/%E5%85%A5%E9%97%A8/"/>
     
   </entry>
   
@@ -448,9 +342,9 @@
     
       <category term="官方案例" scheme="https://noahcodemonkey.top/tags/%E5%AE%98%E6%96%B9%E6%A1%88%E4%BE%8B/"/>
     
-      <category term="进阶" scheme="https://noahcodemonkey.top/tags/%E8%BF%9B%E9%98%B6/"/>
-    
       <category term="Roll a ball" scheme="https://noahcodemonkey.top/tags/Roll-a-ball/"/>
+    
+      <category term="进阶" scheme="https://noahcodemonkey.top/tags/%E8%BF%9B%E9%98%B6/"/>
     
   </entry>
   

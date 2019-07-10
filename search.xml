@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Java基础面试题与答案]]></title>
-    <url>%2F2019%2F07%2F10%2FJava%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%8E%E7%AD%94%E6%A1%88%2F</url>
-    <content type="text"><![CDATA[## ## ##]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[我的Java学习之旅三]]></title>
-    <url>%2F2019%2F06%2F15%2F%E6%88%91%E7%9A%84Java%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85%E4%B8%89%2F</url>
-    <content type="text"><![CDATA[之前在慕课网看的视频看到第三季就没了，才讲到了集合框架，后面还有好多内容没有讲，然后问一个同学要了一份他学习Java当时看的视频资料，开始接着学习完后面的知识看，下面是一项重要的知识点---多线程 知识点 进程 正在执行中的程序，其实为应用程序在内存中运行的那片空间 线程 进程中的一个执行单元，负责进程中的程序的运行 一个线程中是可以有多个线程的，这个应用程序可以称之为多线程程序 并发 可以实现多部分程序同时执行的专业术语称之为并发 多线程的使用可以合理使用CPU的资源，如果线程过多会导致降低性能 CPU处理程序时是通过快熟切换完成的，在我们看来好像随机一样 如何创建线程(一) 定义一个类继承Thread 重写run()方法 创建子类对象，就是创建线程对象 调用start()方法，开启线程并让线程执行，同时告诉jvm取调用run()方法 (面试问题：线程对象调用run()方法和调用start()方法区别？) 多线程执行时，在栈内存中，其实每一个执行线程都有一片自己所属的栈内存空间，进行方法的压栈和弹栈 当运行线程的任务结束了，线程自动在栈内存中释放了，但是当所有的执行线程都结束了，进程也就结束了 获取线程名称： Thread.currentThread()获取当前线程对象 Thread.currentThread().getName()获取当前线程对象的名称 创建线程(二) 定义类实现Runnable接口：避免了继承Thread类的单继承局限性 覆盖接口中的run()方法，将线程任务代码定义到run()方法中 创建Thread类的对象：只有创建Thread类的对象才可以创建线程 将Runnable接口的子类对象作为参数传递给Thread类的构造函数 因为线程已被封装到Runnable接口的run()方法中，而这个run()方法所属于Runnable接口的子类对象，所以将这个子类对象作为参数传递给Thread的构造函数，这样线程对象创建时就可以明确要运行的线程的任务 调用Thread类的start()方法开启线程 为什么是接口？因为当一个类他已经继承于一个父类后，还需要开启线程将类中的一部分代码被多线程执行，若我们继续使用继承Thread就会出现多继承的情况，这是不允许的 实现Runnable接口的好处 实现Runnable接口避免了单继承的局限性，所以较为常用 实现Runnable接口的方式，更加符合面向对象，现成分为了两部分，一部分线程对象，一部分线程任务 继承Thread类：线程对象和线程任务耦合在一起，一旦创建Thread类的子类对象，既有线程对象，又有线程任务 实现Runnable接口：将线程任务单独分离出来封装成对象，类型就是Runnable接口类型。Runnable接口对线程对象和线程任务进行解耦 线程任务中通常都有循环结构 线程的状态 线程安全问题的产生 线程任务中在操作共享的数据 线程任务操作共享数据的代码有多条(运算有多个) 线程安全问题的解决 只要让一个线程在执行线程任务时囧昂多条操作共享数据的代码执行完，在执行过程中不要让其他线程参与运算 Java中解决此问题的通过代码块来完成的 代码块又称同步代码块 synchronized 格式： 1234synchronized(对象)&#123; //需要被同步的代码&#125; 同步代码块的好处与弊端 好处：解决了多线程安全问题 弊端：降低了程序的性能 为了程序的安全损失一点弊端这是值得的 同步的前提 必须保证多个线程在同步总使用的是同一个锁 解决了当多线程安全问题发生时，加入了同步后问题依旧，就要通过这个同步的前提来判断同步是否写正确 同步的另一种体现形式： 同步函数 格式：public synchronized void asle(){} 同步函数使用的锁时this 同步函数于同步代码块有什么区别？ 同步函数使用的锁是固定的this 同步代码块使用的锁可以是任意对象 static同步函数，使用的锁不是this，而是字节码文件对象(类名.class) 单例懒汉式的并发访问 (饿汉式与懒汉式在文章下方有介绍) 饿汉式并发没有安全问题 懒汉式并发会有安全隐患，所以加入同步机制解决安全问题，但是同步的出现降低了效率，可以通过双重判断的方式，解决效率问题减少判断锁的次数 12345678910111213141516171819package Singleton;public class LazySingleton &#123;private static LazySingleton intance = null;private LazySingleton()&#123;&#125;public static synchronized LazySingleton getInstance()&#123; if(intance == null)&#123; synchronized(LazySingleton.class)&#123; if(intance == null)&#123; intance = new LazySingleton(); &#125; &#125; &#125; return intance;&#125; 同步的另一个弊端情况一：当线程任务中出现了多个同步(多个锁)时，如果同步中嵌套了其他的同步，这时候容易引发一种现象：死锁 多线程中最为常见的应用案例： 生产者消费者问题 生产和消费同时执行，需要多线程 但是执行的任务却不相同，处理的资源却是相同的：线程的通信单例模式(懒汉方式和饿汉方式) 参考资料：BK.Mr’s 单例模式的概念 单例模式的意思就是只有一个实例。单例模式确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。这个类称为单例类 关键点 一个类只有一个实例(前提) 他必须自行创建这个实例 他必须自行向整个系统提供这个实例 实现方式 懒汉模式 123456789101112131415161718package Singleton;public class LazySingleton &#123;//懒汉式单例模式//比较懒，在类加载时，不创建实例，因此类加载速度快，但运行时获取对象的速度慢private static LazySingleton intance = null;//静态私用成员，没有初始化 private LazySingleton()&#123;//私有构造函数&#125;public static synchronized LazySingleton getInstance()&#123; //静态，同步，公开访问点 if(intance == null)&#123; intance = new LazySingleton(); &#125; return intance;&#125; 饿汉模式 1234567891011121314151617package Singleton;public class EagerSingleton &#123;//饿汉单例模式//在类加载时就完成了初始化，所以类加载较慢，但获取对象的速度快private static EagerSingleton instance = new EagerSingleton();//静态私有成员，已初始化private EagerSingleton() &#123;//私有构造函数&#125;public static EagerSingleton getInstance()&#123; //静态，不用同步（类加载时已初始化，不会有多线程的问题） return instance;&#125; &#125;]]></content>
-      <categories>
-        <category>Java</category>
-        <category>入门</category>
-        <category>教程</category>
-      </categories>
-      <tags>
-        <tag>教程</tag>
-        <tag>Java</tag>
-        <tag>入门</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[我的Java学习之旅二]]></title>
     <url>%2F2019%2F06%2F13%2F%E6%88%91%E7%9A%84Java%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85%E4%BA%8C%2F</url>
     <content type="text"><![CDATA[这一篇内容还是挺杂的，有异常、一些常用类、集合框架等，因为学过一些基础，不太熟悉但有印象所以就不像写初学新知识文章那样丰富了，我会记一些主要的知识点，容易记混或者已经记混的知识点，新知识点这些 知识点 异常抛出 throw 将产生的异常抛出(动作) throws 声明将要抛出何种类型的异常(声明) 代码：12345public void 方法名(参数列表) throws 异常列表&#123; //调用会抛出异常的方法或者: throw new Exception(); &#125; 异常的实际应用中的经验与总结 处理运行时异常时，采用逻辑去合理规避同时雇主try-catch处理 在多重catch块后面，可以加一个cath(Exception)来处理可能会被遗漏的异常 对于不确定的代码，也可以加上try-catch来处理潜在的异常 尽量去处理异常，切忌知识简单的调用printStackTrace()去打印输出 具体如何处理异常，要根据不同的业务需求和异常类型去决定 尽量添加finally语句块去释放占用的资源 字符串 多次出现的字符常量，Java编译程序只创建一个，所以当两个字符常量相等的话，判断他们的地址是相同的 代码 12345String s1="NoahCode";String s2="NoahCode";System.out.println(s1==s2);控制台输出：true 通过 String s1=”爱慕课”; 声明了一个字符串对象， s1 存放了到字符串对象的引用，在内存中的存放引用关系如下图所示： 然后通过 s1=”欢迎来到：”+s1; 改变了字符串 s1 ，其实质是创建了新的字符串对象，变量 s1 指向了新创建的字符串对象，如下图所示： 一旦一个字符串在内存中创建，则这个字符串将不可改变。如果需要一个可以改变的字符串，我们可以使用StringBuffer或者StringBuilder 每次 new 一个字符串就是产生一个新的对象，即便两个字符串的内容相同，使用 ”==” 比较时也为 ”false” ,如果只需比较内容是否相同，应使用 ”equals()” 方法 String类的常用方法 注意点 字符串 str 中字符的索引从0开始，范围为 0 到 str.length()-1 使用 indexOf 进行字符或字符串查找时，如果匹配返回位置索引；如果没有匹配结果，返回 -1 使用 substring(beginIndex , endIndex) 进行字符串截取时，包括 beginIndex 位置的字符，不包括 endIndex 位置的字符 到现在还在搞混的知识点 获取数组，字符串，集合的大小 如果是数组的话：数组.length属性； 如果是字符串的话：字符串.length()方法； 如果是集合的话：集合.size()方法； ==和equals 基本数据类型，也称原始数据类型。（byte,short,char,int,long,float,double,boolean） 它们之间的比较，应用双等号（==）,比较的是他们的值。 复合数据类型(类) 当他们用（==）进行比较的时候，比较的是他们在内存中的存放地址，所以，除非是同一个new出来的对象，他们的比较后的结果为true，否则比较后结果为false。 JAVA当中所有的类都是继承于Object这个基类的，在Object中的基类中定义了一个equals的方法，这个方法的初始行为是比较对象的内存地 址，但在一些类库当中这个方法被覆盖掉了，如String,Integer,Date在这些类当中equals有其自身的实现，而不再是比较类在堆内存中的存放地址了。 对于复合数据类型之间进行equals比较，在没有覆写equals方法的情况下，他们之间的比较还是基于他们在内存中的存放位置的地址值的，因为Object的equals方法也是用双等号（==）进行比较的，所以比较后的结果跟双等号（==）的结果相同。 代码案例： 1234567891011121314151617181920 public class HelloWorld &#123; public static void main(String[] args) &#123;// 定义一个字符串String s = "aljlkdsflkjsadjfklhasdkjlflkajdflwoiudsafhaasdasd"; // 出现次数int num = 0; // 循环遍历每个字符，判断是否是字符 a ，如果是，累加次数 for (int i=0;i&lt;s.length();i++) &#123; // 获取每个字符，判断是否是字符a if (s.charAt(i)=='a') &#123; // 累加统计次数 num++; &#125; &#125;System.out.println("字符a出现的次数：" + num); &#125; &#125; StringBuilder类常用方法 测试题 功能：将一个由英文字母组成的字符串转换成指定格式—从右边开始每三个字母用逗号分隔的形式 代码： 1234567891011121314 public class HelloWorld &#123; public static void main(String[] args) &#123;// 创建一个空的StringBuilder对象StringBuilder str=new StringBuilder();// 追加字符串str.append("jaewkjldfxmopzdm"); // 从后往前每隔三位插入逗号for(int i=str.length();i&gt;=0;i-=3)&#123; str.insert(i,",");&#125;// 将StringBuilder对象转换为String对象并输出System.out.print(str.toString()); &#125; &#125; 这道题目我居然想了半天，看了别人的代码，才想到了解决方案,我就是迟迟想不到for可以使用i-=3;脑子中一直卡着i–;for循环里面判断(str.length()-i)/3==0的时候insert，可是这样的话他就会把新加入的’,’也当做一位然后就错了 包装类 基本类型和包装类之间对应关系 Integer包装类的构造方法: Integer包装类中最常用方法: 基本类型和包装类之间的转换 装箱 把基本类型转换成包装类，使其具有对象的性质，又可分为手动装箱和自动装箱 手动装箱 代码： 1Integer i1 = new Integer(10); 自动装箱 代码： 1Integer i2 = 10; 拆箱 和装箱相反，把包装类对象装换成基本类型的值，又可分为手动拆箱和自动拆箱 手动拆箱 代码： 1int i3 = i1.intValue(); 自动拆箱 代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859 int i4 = i2; ``` 8. 基本类型和字符串之间的转换 1. 基本类型转换为字符串有三种方法： 1. 使用包装类的toString()方法 2. 使用String类的valueOf()方法 3. 用一个空字符串加上基本类型得到的就是基本类型数据对应的字符串 2. 字符串转换成基本类型有两种方法 1. 调用包装类的parseXxx静态方法 2. 调用包装类的valueOf()方法转换为基本类型的包装类，会自动拆箱9. 使用Date和SimpleDateFormat类表示时间 1. Date类 * import java.util.data;(它所在的包) * Date 类的默认无参构造方法创建出的对象就代表当前时间，我们可以直接输出Date对象显示当前的时间，显示结果如下： ![诶呀，图片加载出了点问题！](https://noahcodemonkey.top/images/img/我的Java学习之旅二/img06.jpg) * 其中， Wed 代表 Wednesday (星期三)， Jun 代表 June (六月)， 11 代表 11 号， CST 代表 China Standard Time (中国标准时间，也就是北京时间，东八区)。 * 从上面的输出结果中，我们发现，默认的时间格式不是很友好，与我们日常看到的日期格式不太一样，如果想要按指定的格式进行显示，如 2014-06-11 09:22:30，这时候我们就可以可以使用 SimpleDateFormat 来对日期时间进行格式化，如可以将日期转换为指定格式的文本，也可将文本转换为日期 2. SimpleDateFormat类 * import java.text.SimpleDateFormat;(它的包的位置) * 使用 format() 方法将日期转换为指定格式的文本 ![诶呀，图片加载出了点问题！](https://noahcodemonkey.top/images/img/我的Java学习之旅二/img07.jpg) * 使用 parse() 方法将文本转换为日期 ![诶呀，图片加载出了点问题！](https://noahcodemonkey.top/images/img/我的Java学习之旅二/img08.jpg) * 注意： 1. 调用 SimpleDateFormat 对象的 parse() 方法时可能会出现转换异常，即 ParseException ，因此需要进行异常处理 2. 使用 Date 类时需要导入 java.util 包，使用 SimpleDateFormat 时需要导入 java.text 包10. Calendar类的应用 * import java.util.Calendar; * java.util.Calendar 类是一个抽象类，可以通过调用 getInstance() 静态方法获取一个 Calendar 对象，此对象已由当前日期时间初始化，即默认代表当前时间:Calendar c = Calendar.getInstance(); * 想要获取年、月、日、时间等信息，我们可以在创建完对象后使用get()方法来获取日期时间信息，参数为需要获得的字段的值：Calendar.Year...(如图所示) ![诶呀，图片加载出了点问题！](https://noahcodemonkey.top/images/img/我的Java学习之旅二/img09.jpg) * Calendar 类提供了 getTime() 方法，用来获取 Date 对象，完成 Calendar 和 Date 的转换，还可通过 getTimeInMillis() 方法，获取此 Calendar 的时间值，以毫秒为单位(如图所示) ![诶呀，图片加载出了点问题！](https://noahcodemonkey.top/images/img/我的Java学习之旅二/img010.jpg)11. Math类操作数据 * 常用的方法： ![诶呀，图片加载出了点问题！](https://noahcodemonkey.top/images/img/我的Java学习之旅二/img011.jpg)12. Java中的集合框架 ![诶呀，图片加载出了点问题！](https://noahcodemonkey.top/images/img/我的Java学习之旅二/img012.png) 1. 通过迭代器遍历List ```Java public void testIterator()&#123; Iterator it = coursesToSelect.iterator(); while(it.hasNext())&#123; Course cr = (Course)it.next(); System.out.println("课程:"+cr.id+":"+cr.name); &#125; &#125; 对集合进行排序 import java.util.Collections; 使用Collections.sort();进行排序 Comparable和Comparator Comparable接口–可比较的 实现该接口表示：这个类的实例可以比较大小，可以进行自然排序 定义了默认的比较规则 其实现类需要实现compareTo()方法 compareTo()方法返回证书表示大，负数表示小，0表示相等 Comparator接口–比较工具接口 用一定以临时比较规则，而不是默认比较规则 其实现类需要实现compare()方法 Comparator和Comparable都是Java集合框架的成员 到头来就是要多写代码，多看API，有很多有意思的方法，虽然很少用，但是能减轻我们的代码量，要去认识它们，想到它们，熟悉它们]]></content>
@@ -49,11 +29,6 @@
         <tag>Java</tag>
         <tag>入门</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[我的Spring学习之旅三(未完待补)]]></title>
-    <url>%2F2019%2F06%2F11%2F%E6%88%91%E7%9A%84Spring%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85%E4%B8%89%2F</url>
-    <content type="text"><![CDATA[知识点预告 完善我们的account案例 分析案例中问题 回顾之前讲过的一个技术：动态代理 动态代理另一种实现方式 解决案例中的问题 AOP的概念 Spring中的AOP相关术语 Spring中基于XML和注解的AOP配置 ## ##]]></content>
   </entry>
   <entry>
     <title><![CDATA[我的Spring学习之旅二]]></title>
@@ -89,24 +64,6 @@
         <tag>Spring 全家桶</tag>
         <tag>入门</tag>
         <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[我的SpringBoot学习之旅三(暂不完整)]]></title>
-    <url>%2F2019%2F06%2F02%2F%E6%88%91%E7%9A%84SpringBoot%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85%E4%B8%89%2F</url>
-    <content type="text"><![CDATA[开始了我的第三篇 Spring Boot 的学习，这次的内容是关于 Spring Boot 与多数据源的配置。 配置多数据源的注意事项 不同数据源的配置要分开 关注每次使用的数据源 有多个 DataSource 时系统如何判断 对应的设施(事务、ORM 等)如何选择 DataSource Spring Boot 中的多数据源配置 手工配置两组 DataSource 及相关内容 与 Spring Boot 协同工作(二选一) 配置 @Primary 类型的 Bean 排除 Spring Boot 的自动配置 DataSourceAutoConfiguration DataSourceTransactionManagerAutoConfiguration JdbcTemplateAutoConfiguration 代码在我们的/src/main/java/xxx/xxx.java中编辑我们的代码 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263package com.noahcode.test.demo;import lombok.extern.slf4j.Slf4j;import org.springframework.boot.SpringApplication;import org.springframework.boot.autoconfigure.SpringBootApplication;import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;import org.springframework.boot.context.properties.ConfigurationProperties;import org.springframework.context.annotation.Bean;import org.springframework.jdbc.datasource.DataSourceTransactionManager;import org.springframework.transaction.PlatformTransactionManager;import javax.annotation.Resource;import javax.sql.DataSource;@SpringBootApplication(exclude = &#123;DataSourceAutoConfiguration.class,DataSourceTransactionManagerAutoConfiguration.class, JdbcTemplateAutoConfiguration.class&#125;)@Slf4jpublic class DemoApplication &#123; public static void main(String[] args) &#123; SpringApplication.run(DemoApplication.class, args); &#125; @Bean @ConfigurationProperties("foo.datasource") public DataSourceProperties fooDataSourceProperties() &#123; return new DataSourceProperties(); &#125; @Bean public DataSource fooDataSource() &#123; DataSourceProperties dataSourceProperties = fooDataSourceProperties(); log.info("foo datasource: &#123;&#125;", dataSourceProperties.getUrl()); return dataSourceProperties.initializeDataSourceBuilder().build(); &#125; @Bean @Resource public PlatformTransactionManager fooTxManager(DataSource fooDataSource)&#123; return new DataSourceTransactionManager(fooDataSource); &#125; @Bean @ConfigurationProperties("bar.datasource") public DataSourceProperties barDataSourceProperties()&#123; return new DataSourceProperties(); &#125; @Bean public DataSource barDataSource()&#123; DataSourceProperties dataSourceProperties=barDataSourceProperties(); log.info("bar datasource: &#123;&#125;",dataSourceProperties.getUrl()); return dataSourceProperties.initializeDataSourceBuilder().build(); &#125; @Bean @Resource public PlatformTransactionManager barTxManager(DataSource barDataSource)&#123; return new DataSourceTransactionManager(barDataSource); &#125;&#125; 编辑/src/main/resources/application.properties文件 12345678910management.endpoints.web.exposure.include=*spring.output.ansi.enabled=alwaysfoo.datasource.url=jdbc:h2:mem:foofoo.datasource.username=safoo.datasource.password=bar.datasource.url=jdbc:h2:mem:barbar.datasource.username=sabar.datasource.password= 代码分析注解一些重复的之前的文章写到过的就自动略过了，如果有不清楚的可以回过头去看之前的文章或者百度啦。 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class,DataSourceTransactionManagerAutoConfiguration.class,JdbcTemplateAutoConfiguration.class}) 从之前的两篇文章了解来这还是第一次知道 @SpringBootApplication 后面居然还可以加东西的，这个地方从百度了解意思为将我们定义的这些配置排除在外，不让 Spring Boot 为我们自动配置它们。 @Bean 虽然是一个新的注解，但是在学习 Spring Boot 之前其实就了解到 Spring 的 Bean 对象了，这个注解就是创建一个 Bean 对象。 咔 这章就到此处停止了 对 感觉有点难理解了，所以后续学完再来补充此篇文章了，换了一个新手教程学习一下，但还是 Spring Boot 哦]]></content>
-      <categories>
-        <category>Java</category>
-        <category>Spring 全家桶</category>
-        <category>Spring Boot</category>
-        <category>教程</category>
-      </categories>
-      <tags>
-        <tag>教程</tag>
-        <tag>Java</tag>
-        <tag>Spring 全家桶</tag>
-        <tag>Spring Boot</tag>
-        <tag>入门</tag>
       </tags>
   </entry>
   <entry>
@@ -205,8 +162,8 @@
       <tags>
         <tag>Unity</tag>
         <tag>官方案例</tag>
-        <tag>进阶</tag>
         <tag>Roll a ball</tag>
+        <tag>进阶</tag>
       </tags>
   </entry>
   <entry>
