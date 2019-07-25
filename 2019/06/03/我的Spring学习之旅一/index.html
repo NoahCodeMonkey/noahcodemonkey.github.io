@@ -136,7 +136,7 @@
 <meta property="og:image" content="https://noahcodemonkey.top/images/img/%E6%88%91%E7%9A%84Spring%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85%E4%B8%80/img01_01.png">
 <meta property="og:image" content="https://noahcodemonkey.top/images/img/%E6%88%91%E7%9A%84Spring%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85%E4%B8%80/img02.png">
 <meta property="og:image" content="https://noahcodemonkey.top/images/img/%E6%88%91%E7%9A%84Spring%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85%E4%B8%80/img03.png">
-<meta property="og:updated_time" content="2019-06-10T07:17:23.755Z">
+<meta property="og:updated_time" content="2019-07-25T13:49:57.100Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我的Spring学习之旅一">
 <meta name="twitter:description" content="我的 Spring 学习之旅--第一章">
@@ -392,8 +392,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-10T15:17:23+08:00">
-                2019-06-10
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-25T21:49:57+08:00">
+                2019-07-25
               </time>
             
           </span>
@@ -520,7 +520,6 @@
         <img src="https://noahcodemonkey.top/images/img/我的Spring学习之旅一/header.jpg" alt="" style="width:100%">
 
 <p class="description">之前学了三章的 Spring Boot 课程，然后换了三波教材，一开始自信的我直接磕文档，败下阵来后在b站找了一个极客时间的教程，学到多条数据源配置的时候看代码着实有点懵，就换了一套尚硅谷的 Spinrg Boot 教程，但是吧一进去老师就说，Spirng Boot 有一个缺点就是上手简单，精通很难因为他是由 Spring 集合而成的，所以想要学好 Spring Boot 就要先学好 Spinrg，接着我就来写此篇文章了。</p>
-
 <a id="more"></a>
 
 <h2 id="参考教程"><a href="#参考教程" class="headerlink" title="参考教程"></a>参考教程</h2><p>b站是个好地方，现在我要学啥的时候都是先在b站找找有没有相关的教学视频.</p>
@@ -720,9 +719,12 @@
 <ol>
 <li><p>构造函数注入</p>
 <ul>
-<li>使用的标签：constructor-arg</li>
-<li>标签的出现位置：bean标签的内部</li>
-<li>标签中的属性：<ul>
+<li><p>使用的标签：constructor-arg</p>
+</li>
+<li><p>标签的出现位置：bean标签的内部</p>
+</li>
+<li><p>标签中的属性：</p>
+<ul>
 <li>type：用于指定要注入的数据的数据类型，该数据类型也是构造函数中某个或某些参数的类型</li>
 <li>index：用于指定要注入的数据给构造函数中指定索引位置的参数赋值。索引的位置是从0开始</li>
 <li>name：用于指定给构造函数中指定名称的参数赋值 <strong>(常用的)</strong></li>
@@ -730,37 +732,46 @@
 <li>ref：用于指定其他的bean类型数据。他指的就是在spring的IOC核心容器中出现过的bean对象</li>
 </ul>
 </li>
-<li>优势<ul>
+<li><p>优势</p>
+<ul>
 <li>在获取bean对象时，诸如数据是必须的操作，否则对象无法创建。</li>
 </ul>
 </li>
-<li>弊端<ul>
+<li><p>弊端</p>
+<ul>
 <li>改变了bean对象的实例化方式，使我们在创建对象时，如果用不到这些数据，也必须提供。</li>
 </ul>
 </li>
-<li>代码 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"accountService"</span> <span class="attr">class</span>=<span class="string">"com.noahcode.service.impl.AccountServiceImpl"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"test"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">value</span>=<span class="string">"18"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"birthday"</span> <span class="attr">ref</span>=<span class="string">"now"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"now"</span> <span class="attr">class</span>=<span class="string">"java.util.Date"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<li><p>代码 </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"accountService"</span> <span class="attr">class</span>=<span class="string">"com.noahcode.service.impl.AccountServiceImpl"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"test"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">value</span>=<span class="string">"18"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"birthday"</span> <span class="attr">ref</span>=<span class="string">"now"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"now"</span> <span class="attr">class</span>=<span class="string">"java.util.Date"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 <li><p>set方法注入 <strong>(更常用的方式)</strong></p>
 <ul>
-<li>使用标签：property</li>
-<li>出现的位置：bean标签的内部</li>
-<li>标签中的属性：<ul>
+<li><p>使用标签：property</p>
+</li>
+<li><p>出现的位置：bean标签的内部</p>
+</li>
+<li><p>标签中的属性：</p>
+<ul>
 <li>name:用于指定注入时所调用的set方法名称</li>
 <li>value:用于提供基本类型和String类型的数据</li>
 <li>ref:用于指定其他的bean类型数据。他指的就是在spring的IOC核心容器中出现过的bean对象</li>
 </ul>
 </li>
-<li>优势：<ul>
+<li><p>优势：</p>
+<ul>
 <li>创建对象时没有明确的的限制，可以直接使用默认构造函数</li>
 </ul>
 </li>
-<li>弊端：<ul>
+<li><p>弊端：</p>
+<ul>
 <li>如果有某个成员必须有值，则获取对象时有可能set方法没有执行</li>
 </ul>
 </li>
-<li>代码<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"accountService"</span> <span class="attr">class</span>=<span class="string">"com.noahcode.service.impl.AccountServiceImpl"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"test"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">value</span>=<span class="string">"18"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"birthday"</span> <span class="attr">ref</span>=<span class="string">"now"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"now"</span> <span class="attr">class</span>=<span class="string">"java.util.Date"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<li><p>代码</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"accountService"</span> <span class="attr">class</span>=<span class="string">"com.noahcode.service.impl.AccountServiceImpl"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"test"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">value</span>=<span class="string">"18"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"birthday"</span> <span class="attr">ref</span>=<span class="string">"now"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"now"</span> <span class="attr">class</span>=<span class="string">"java.util.Date"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -1001,7 +1012,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1012,7 +1023,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1023,7 +1034,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
